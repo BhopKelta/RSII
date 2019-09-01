@@ -1,0 +1,144 @@
+﻿namespace eBusStation.Desktop
+{
+    partial class LoginForm
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnlogin = new System.Windows.Forms.Button();
+            this.textBoxUserName = new System.Windows.Forms.TextBox();
+            this.textBoxPw = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.checkBoxRememberme = new System.Windows.Forms.CheckBox();
+            this.SuspendLayout();
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label1.Font = new System.Drawing.Font("Lucida Calligraphy", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(0, 0);
+            this.label1.Margin = new System.Windows.Forms.Padding(15, 0, 3, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(744, 108);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Uposlenički modul --> \r\nZa sve akcije molimo prijavite se na naš sistem.\r\nHvala.\r" +
+    "\n";
+            // 
+            // btnlogin
+            // 
+            this.btnlogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnlogin.Location = new System.Drawing.Point(323, 224);
+            this.btnlogin.Name = "btnlogin";
+            this.btnlogin.Size = new System.Drawing.Size(94, 30);
+            this.btnlogin.TabIndex = 1;
+            this.btnlogin.Text = "Prijava";
+            this.btnlogin.UseVisualStyleBackColor = true;
+            this.btnlogin.Click += new System.EventHandler(this.btnlogin_Click);
+            // 
+            // textBoxUserName
+            // 
+            this.textBoxUserName.Location = new System.Drawing.Point(309, 165);
+            this.textBoxUserName.Name = "textBoxUserName";
+            this.textBoxUserName.Size = new System.Drawing.Size(117, 20);
+            this.textBoxUserName.TabIndex = 2;
+            // 
+            // textBoxPw
+            // 
+            this.textBoxPw.Location = new System.Drawing.Point(309, 198);
+            this.textBoxPw.MaxLength = 25;
+            this.textBoxPw.Name = "textBoxPw";
+            this.textBoxPw.PasswordChar = '*';
+            this.textBoxPw.Size = new System.Drawing.Size(117, 20);
+            this.textBoxPw.TabIndex = 3;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(208, 165);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(95, 16);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Korisničko ime";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(249, 198);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(54, 16);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "Lozinka";
+            // 
+            // checkBoxRememberme
+            // 
+            this.checkBoxRememberme.AutoSize = true;
+            this.checkBoxRememberme.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxRememberme.Location = new System.Drawing.Point(423, 230);
+            this.checkBoxRememberme.Name = "checkBoxRememberme";
+            this.checkBoxRememberme.Size = new System.Drawing.Size(98, 20);
+            this.checkBoxRememberme.TabIndex = 6;
+            this.checkBoxRememberme.Text = "Zapamti me";
+            this.checkBoxRememberme.UseVisualStyleBackColor = true;
+            // 
+            // LoginForm
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.checkBoxRememberme);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.textBoxPw);
+            this.Controls.Add(this.textBoxUserName);
+            this.Controls.Add(this.btnlogin);
+            this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.Name = "LoginForm";
+            this.Text = "Forma za prijavu";
+            this.Load += new System.EventHandler(this.LoginForm_Load);
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
+        }
+
+        #endregion
+
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnlogin;
+        private System.Windows.Forms.TextBox textBoxUserName;
+        private System.Windows.Forms.TextBox textBoxPw;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.CheckBox checkBoxRememberme;
+    }
+}
+

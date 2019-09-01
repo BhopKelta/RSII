@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="eBusStation.Phone.Transaction">
+    <ContentPage.Content>
+        <ScrollView>
+        <StackLayout Spacing="1">
+            <Label Text="Pregled transakcija-putovanja rezervisanih, status-A(aktivna),O(otkazana)"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand"  FontSize="Medium"/>
+            <ListView x:Name="listViewTransactions" HasUnevenRows="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ScrollView VerticalOptions="FillAndExpand">
+                                <StackLayout Orientation="Vertical" Spacing="1" Padding="1">
+                                    <Label FontSize="Medium" HorizontalOptions="Fill" VerticalOptions="Fill" Text="{Binding datumKupovine, StringFormat='Datum kupovine:{0}'}"></Label>
+                                    <Label FontAttributes="Bold" FontSize="Large" HorizontalOptions="Fill" VerticalOptions="Fill" Text="{Binding Status,StringFormat='Status rezervacije:{0}'}"></Label>
+                                    <Label FontSize="Medium" HorizontalOptions="Fill" VerticalOptions="Fill" Text="{Binding UkupnaCijena,StringFormat='Ukupno potroseno:{0}'}"></Label>
+                                    <Label FontSize="Large" HorizontalOptions="Fill" VerticalOptions="Fill" Text="{Binding datumPutovanja,StringFormat='Datum putovanja:{0}'}">
+
+                                    </Label>
+                                    <Label FontSize="Large" HorizontalOptions="Fill" VerticalOptions="Fill" Text="{Binding vrijemePolaska,StringFormat='Vrijeme polaska:{0}'}"></Label>
+                                    <Label FontSize="Large" HorizontalOptions="Fill" VerticalOptions="Fill" Text="{Binding Destinacija,StringFormat='Putujete do :{0}'}"></Label>
+                                    <Label FontSize="Large" HorizontalOptions="Fill" VerticalOptions="Fill" Text="{Binding VrijemeDolaska,StringFormat='Vrijeme dolaska:{0}'}"></Label>
+                                        <Button CommandParameter="{Binding .}" Text="Otkazi rezervaciju" Clicked="Button_Cancel_Transaction_Clicked"></Button>
+                                </StackLayout>
+                            </ScrollView>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

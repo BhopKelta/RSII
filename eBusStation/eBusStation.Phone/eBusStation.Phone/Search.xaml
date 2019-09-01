@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="eBusStation.Phone.Search">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                <Label Text="Pretrazivanje ponuda"
+                   FontSize="Large"/>
+                <Entry x:Name="entryBeginningStation" Placeholder="Pocetna stanica..."></Entry>
+                <Entry x:Name="entryEndingStation" Placeholder="Zadnja stanica..."></Entry>
+                <Entry x:Name="entryTraveler" Placeholder="Prevoznik..."></Entry>
+                <Entry x:Name="entryTimeStarting" Placeholder="Vrijeme polaska - hh:mm..."></Entry>
+                <Entry x:Name="entryTimeOfComingAtStation" Placeholder="Vrijeme dolaska na stanicu - hh:mm..."></Entry>
+                <Button Text="Pretrazi" Clicked="Button_Clicked"></Button>
+                <StackLayout Margin="10" Spacing="5">
+                    <StackLayout Orientation="Horizontal">
+                        <Label FontAttributes="Bold" LineBreakMode="NoWrap" FontSize="Medium" Margin="1" Text="Linija:" VerticalOptions="Fill" HorizontalOptions="FillAndExpand"></Label>
+                        <Label FontAttributes="Bold" LineBreakMode="NoWrap" FontSize="Medium" Margin="1" Text="Posjecuje grad:" VerticalOptions="Fill" HorizontalOptions="FillAndExpand"></Label>
+                        <Label FontAttributes="Bold" LineBreakMode="NoWrap"  FontSize="Medium" Margin="1" Text="Tip linije:" VerticalOptions="Fill" HorizontalOptions="FillAndExpand"></Label>
+                        <Label FontAttributes="Bold" LineBreakMode="WordWrap" FontSize="Medium" Margin="1" Text="Prevoznik:" VerticalOptions="Fill" HorizontalOptions="FillAndExpand"></Label>
+                        <Label FontAttributes="Bold" LineBreakMode="WordWrap"  FontSize="Medium" Margin="1" Text="Vrijeme polaska:" VerticalOptions="Fill" HorizontalOptions="FillAndExpand"></Label>
+                    </StackLayout>
+                    <ListView x:Name="searchListView">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <ViewCell.View>
+                                        <StackLayout Orientation="Horizontal" >
+                                            <Label Text="{Binding Naziv}"  HorizontalOptions="FillAndExpand"></Label>
+                                            <Label Text="{Binding PosjeceniGrad}"  HorizontalOptions="FillAndExpand"></Label>
+                                            <Label Text="{Binding TipLinije}"  HorizontalOptions="FillAndExpand"></Label>
+                                            <Label Text="{Binding Prevoznik}" HorizontalOptions="FillAndExpand"></Label>
+                                            <Label Text="{Binding vrijemePolaska}" HorizontalOptions="FillAndExpand"></Label>
+                                        </StackLayout>
+                                    </ViewCell.View>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

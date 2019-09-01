@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="eBusStation.Phone.MainPageLineDetails"
+             xmlns:input="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit">
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical" Margin="15">
+            <Label Text="Gradovi kroz koje prolazi linija- jedan grad se pojavljuje dva puta zbog obracuna cijene u zavisnosti od tipa karte ili u zavisnosti od-do se putuje." 
+                   FontSize="20" HorizontalOptions="Center"></Label>
+            <StackLayout Orientation="Horizontal">
+                <Label LineBreakMode="WordWrap" FontSize="Small" Text="Grad:"  HorizontalOptions="FillAndExpand" VerticalOptions="Fill" FontAttributes="Bold"></Label>
+                <Label LineBreakMode="WordWrap" FontSize="Small" Text="Vrijeme dolaska:"  HorizontalOptions="FillAndExpand" VerticalOptions="Fill" FontAttributes="Bold"></Label>
+                <Label LineBreakMode="WordWrap"  FontSize="Small" Text="Cijena od polazne stanice do ovog grada (KM):"  VerticalOptions="Fill" HorizontalOptions="FillAndExpand" FontAttributes="Bold"></Label>
+                <Label LineBreakMode="WordWrap"  FontSize="Small"   Text="Cijena od posmatrane stanice do destinacije(KM)" VerticalOptions="Fill"  HorizontalOptions="FillAndExpand" FontAttributes="Bold"></Label>
+                <Label LineBreakMode="WordWrap" FontSize="Small" HorizontalOptions="Fill"  Text="Tip karte:" FontAttributes="Bold"></Label>
+            </StackLayout>
+         
+            <ScrollView>
+                <ListView x:Name="listDetailCities" ItemsSource="{Binding model}" HasUnevenRows="True">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Orientation="Horizontal" Spacing="5">
+                                    <Label  Text="{Binding Grad}" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start"></Label>
+                                    <TimePicker Margin="0" Time="{Binding Vrijeme_dolaska}" HorizontalOptions="FillAndExpand"></TimePicker>
+                                    <Label Margin="2"  Text="{Binding cijenaOdPolaska}" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start"></Label>
+                                    <Label Margin="1" Text="{Binding Cijena_od_grada_destinacije}"  HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start"></Label>
+                                    <Label Text="{Binding Tip_karte}" Margin="4" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start"></Label>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </ScrollView>
+            <input:CheckBox x:Name="twoWayTicket" Text="Povratna?" Type="Box" CheckChanged="CheckBox_CheckChanged"></input:CheckBox>
+            <Label Text="Prva cijena je od polazne stanice-do grada, druga cijena je od tog grada-destinacije"></Label>
+            <Label Text="Za odabir ponude i eventualnu rezervaciju odaberite odgovarajucu ponudu klikom"></Label>
+            <StackLayout>
+                <Label Text="Preporucene relacije" FontAttributes="Bold" FontSize="Large"></Label>
+                <input:CheckBox x:Name="recommenderBox" Text="Preporuci?" Type="Box" CheckChanged="CheckBox_CheckChanged"></input:CheckBox>
+                <ScrollView>
+                    <ListView x:Name="listRecommender"  HasUnevenRows="True">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout Orientation="Horizontal" Spacing="5" >
+                                        <Label Text="{Binding Naziv,StringFormat='Linija:{0}'}"></Label>
+                                        <Label  Text="{Binding Grad,StringFormat='Grad:{0}'}" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start"></Label>
+                                        <TimePicker Margin="0" Time="{Binding Vrijeme_dolaska}" HorizontalOptions="FillAndExpand"></TimePicker>
+                                        <Label Margin="2"  Text="{Binding cijenaOdPolaska}" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start"></Label>
+                                        <Label Margin="1" Text="{Binding Cijena_od_grada_destinacije}"  HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start"></Label>
+                                        <Label Text="{Binding Tip_karte}" Margin="4" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start"></Label>
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </ScrollView>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

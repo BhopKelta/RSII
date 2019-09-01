@@ -1,0 +1,2861 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="p1744_Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="__EFMigrationsHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+          </Key>
+          <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Autobusi">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="brojSjedistaBusa" Type="int" Nullable="false" />
+          <Property Name="Proizvodjac" Type="nvarchar(max)" />
+          <Property Name="slikaAutobusa" Type="varbinary(max)" />
+          <Property Name="VrstaAutobusaId" Type="int" Nullable="false" />
+          <Property Name="RegOznake" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="AutorizacijskiToken">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Vrijednost" Type="nvarchar(max)" />
+          <Property Name="KorisnikId" Type="int" Nullable="false" />
+          <Property Name="VrijemeEvidentiranja" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="IpAdresa" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Drzave">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Naziv" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Gradovi">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Naziv" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="DrzavaId" Type="int" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Karte">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BrojKarte" Type="nvarchar(max)" />
+          <Property Name="datumPutovanja" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="brojSjedista" Type="nvarchar(max)" />
+          <Property Name="Aktivna" Type="bit" Nullable="false" />
+          <Property Name="TipKarteId" Type="int" Nullable="false" />
+          <Property Name="PosjecujeLokacijeId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Kartice">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BrojKartice" Type="nvarchar(max)" />
+          <Property Name="datumIsteka" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="Banka" Type="nvarchar(max)" />
+          <Property Name="vrstaKartice" Type="nvarchar(max)" />
+          <Property Name="StanjeRacuna" Type="real" Nullable="false" />
+          <Property Name="SredstvoPlacanjaId" Type="int" Nullable="false" />
+          <Property Name="KlijentiId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Korisnici">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="username" Type="nvarchar(max)" />
+          <Property Name="Ime" Type="nvarchar(max)" />
+          <Property Name="Prezime" Type="nvarchar(max)" />
+          <Property Name="datumRodjenja" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="Spol" Type="nvarchar" MaxLength="1" Nullable="false" />
+          <Property Name="Telefon" Type="nvarchar(max)" />
+          <Property Name="ZemljaPorijekla" Type="nvarchar(max)" />
+          <Property Name="Discriminator" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="BrojIndeksa" Type="nvarchar(max)" />
+          <Property Name="slikaIndeksa" Type="varbinary(max)" />
+          <Property Name="slikaPenzionerskeKartice" Type="varbinary(max)" />
+          <Property Name="GodineIskustva" Type="int" />
+          <Property Name="Email" Type="nvarchar(max)" />
+          <Property Name="isValid" Type="bit" Nullable="false" />
+          <Property Name="Zanimanje" Type="nvarchar(max)" />
+          <Property Name="UlogeId" Type="int" Nullable="false" />
+          <Property Name="Adresa" Type="nvarchar(max)" />
+          <Property Name="Grad" Type="nvarchar(max)" />
+          <Property Name="Hash" Type="nvarchar(max)" />
+          <Property Name="Salt" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="KretanjeAutobusa">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TrajanjePuta" Type="real" Nullable="false" />
+          <Property Name="LinijeId" Type="int" Nullable="false" />
+          <Property Name="AutobusId" Type="int" Nullable="false" />
+          <Property Name="vrijemePolaska" Type="datetime2" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Linije">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Naziv" Type="nvarchar(max)" />
+          <Property Name="TipLinije" Type="nvarchar(max)" />
+          <Property Name="RedniBrojLinije" Type="nvarchar(max)" />
+          <Property Name="PrevoznikId" Type="int" Nullable="false" />
+          <Property Name="PolazakId" Type="int" Nullable="false" />
+          <Property Name="DestinacijaId" Type="int" Nullable="false" />
+          <Property Name="vrijemePolaska" Type="nvarchar(max)" />
+          <Property Name="AutobusId" Type="int" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Obavijesti">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LinijaId" Type="int" Nullable="false" />
+          <Property Name="Tekst" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Popusti">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="vrstaPopusta" Type="nvarchar(max)" />
+          <Property Name="Postotak" Type="real" Nullable="false" />
+          <Property Name="DatumVazenjaPopusta" Type="datetime2" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PopustNaLiniji">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PopustId" Type="int" Nullable="false" />
+          <Property Name="LinijeId" Type="int" Nullable="false" />
+          <Property Name="Opis" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="PosjecujeLokacije">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cijenaOdPolaska" Type="real" Nullable="false" />
+          <Property Name="LinijeId" Type="int" Nullable="false" />
+          <Property Name="GradId" Type="int" Nullable="false" />
+          <Property Name="vrijemeDolaska" Type="nvarchar(max)" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="CijenaOdTrenutnogGradaDoDestinacije" Type="float" />
+          <Property Name="isStudentska" Type="bit" />
+        </EntityType>
+        <EntityType Name="PosjedujeAutobuse">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PrevoznikId" Type="int" Nullable="false" />
+          <Property Name="AutobusId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Prevoznici">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Naziv" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="KontaktTelefon" Type="nvarchar(max)" />
+          <Property Name="webStranica" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Recenzije">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ocjena" Type="int" Nullable="false" />
+          <Property Name="Opis" Type="nvarchar(max)" />
+          <Property Name="Komentar" Type="nvarchar(max)" />
+          <Property Name="KlijentiId" Type="int" />
+          <Property Name="KartaId" Type="int" />
+        </EntityType>
+        <EntityType Name="SaobracajniDnevnik">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="vrijemeDolaska" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="brojPutnogNaloga" Type="nvarchar(max)" />
+          <Property Name="UposlenikId" Type="int" Nullable="false" />
+          <Property Name="StanicaId" Type="int" Nullable="false" />
+          <Property Name="daLiJeKansnio" Type="bit" />
+          <Property Name="vrijemeKasnjena" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="SredstvoPlacanja">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Tip" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Stanice">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Naziv" Type="nvarchar(max)" />
+          <Property Name="GradId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TipoviKarte">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Tip" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="TransakcijaStavke">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Kolicina" Type="int" Nullable="false" />
+          <Property Name="UkupnaCijena" Type="real" Nullable="false" />
+          <Property Name="TransakcijaId" Type="int" Nullable="false" />
+          <Property Name="KartaId" Type="int" Nullable="false" />
+          <Property Name="PopustId" Type="int" />
+        </EntityType>
+        <EntityType Name="Transakcije">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="datumKupovine" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="brojTransakcije" Type="nvarchar(max)" />
+          <Property Name="Status" Type="nvarchar(max)" />
+          <Property Name="otkazano" Type="bit" Nullable="false" />
+          <Property Name="KlijentiId" Type="int" Nullable="false" />
+          <Property Name="KarticaId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Uloge">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Naziv" Type="nvarchar(max)" />
+          <Property Name="Opis" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="VrstaAutobusa">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Tip" Type="nvarchar(max)" />
+        </EntityType>
+        <Association Name="FK__Obavijest__Linij__39E294A9">
+          <End Role="Linije" Type="Self.Linije" Multiplicity="1" />
+          <End Role="Obavijesti" Type="Self.Obavijesti" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Linije">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Obavijesti">
+              <PropertyRef Name="LinijaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Autobusi_VrstaAutobusa_VrstaAutobusaId">
+          <End Role="VrstaAutobusa" Type="Self.VrstaAutobusa" Multiplicity="1" />
+          <End Role="Autobusi" Type="Self.Autobusi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VrstaAutobusa">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Autobusi">
+              <PropertyRef Name="VrstaAutobusaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AutorizacijskiToken_Korisnici_KorisnikId">
+          <End Role="Korisnici" Type="Self.Korisnici" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AutorizacijskiToken" Type="Self.AutorizacijskiToken" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Korisnici">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AutorizacijskiToken">
+              <PropertyRef Name="KorisnikId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Gradovi_Drzave_DrzavaId">
+          <End Role="Drzave" Type="Self.Drzave" Multiplicity="1" />
+          <End Role="Gradovi" Type="Self.Gradovi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Drzave">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Gradovi">
+              <PropertyRef Name="DrzavaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Karte_PosjecujeLokacije_PosjecujeLokacijeId">
+          <End Role="PosjecujeLokacije" Type="Self.PosjecujeLokacije" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Karte" Type="Self.Karte" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PosjecujeLokacije">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Karte">
+              <PropertyRef Name="PosjecujeLokacijeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Karte_TipoviKarte_TipKarteId">
+          <End Role="TipoviKarte" Type="Self.TipoviKarte" Multiplicity="1" />
+          <End Role="Karte" Type="Self.Karte" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoviKarte">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Karte">
+              <PropertyRef Name="TipKarteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Kartice_Korisnici_KlijentiId">
+          <End Role="Korisnici" Type="Self.Korisnici" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Kartice" Type="Self.Kartice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Korisnici">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Kartice">
+              <PropertyRef Name="KlijentiId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Kartice_SredstvoPlacanja_SredstvoPlacanjaId">
+          <End Role="SredstvoPlacanja" Type="Self.SredstvoPlacanja" Multiplicity="1" />
+          <End Role="Kartice" Type="Self.Kartice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SredstvoPlacanja">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Kartice">
+              <PropertyRef Name="SredstvoPlacanjaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Korisnici_Uloge_UlogeId">
+          <End Role="Uloge" Type="Self.Uloge" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Korisnici" Type="Self.Korisnici" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Uloge">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Korisnici">
+              <PropertyRef Name="UlogeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KretanjeAutobusa_Autobusi_AutobusId">
+          <End Role="Autobusi" Type="Self.Autobusi" Multiplicity="1" />
+          <End Role="KretanjeAutobusa" Type="Self.KretanjeAutobusa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Autobusi">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="KretanjeAutobusa">
+              <PropertyRef Name="AutobusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KretanjeAutobusa_Linije_LinijeId">
+          <End Role="Linije" Type="Self.Linije" Multiplicity="1" />
+          <End Role="KretanjeAutobusa" Type="Self.KretanjeAutobusa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Linije">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="KretanjeAutobusa">
+              <PropertyRef Name="LinijeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Linije_Autobusi_AutobusId">
+          <End Role="Autobusi" Type="Self.Autobusi" Multiplicity="0..1" />
+          <End Role="Linije" Type="Self.Linije" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Autobusi">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Linije">
+              <PropertyRef Name="AutobusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Linije_Gradovi_DestinacijaId">
+          <End Role="Gradovi" Type="Self.Gradovi" Multiplicity="1" />
+          <End Role="Linije" Type="Self.Linije" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gradovi">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Linije">
+              <PropertyRef Name="DestinacijaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Linije_Gradovi_PolazakId">
+          <End Role="Gradovi" Type="Self.Gradovi" Multiplicity="1" />
+          <End Role="Linije" Type="Self.Linije" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gradovi">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Linije">
+              <PropertyRef Name="PolazakId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Linije_Prevoznici_PrevoznikId">
+          <End Role="Prevoznici" Type="Self.Prevoznici" Multiplicity="1" />
+          <End Role="Linije" Type="Self.Linije" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Prevoznici">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Linije">
+              <PropertyRef Name="PrevoznikId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PopustNaLiniji_Linije_LinijeId">
+          <End Role="Linije" Type="Self.Linije" Multiplicity="1" />
+          <End Role="PopustNaLiniji" Type="Self.PopustNaLiniji" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Linije">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PopustNaLiniji">
+              <PropertyRef Name="LinijeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PopustNaLiniji_Popusti_PopustId">
+          <End Role="Popusti" Type="Self.Popusti" Multiplicity="1" />
+          <End Role="PopustNaLiniji" Type="Self.PopustNaLiniji" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Popusti">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PopustNaLiniji">
+              <PropertyRef Name="PopustId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PosjecujeLokacije_Gradovi_GradId">
+          <End Role="Gradovi" Type="Self.Gradovi" Multiplicity="1" />
+          <End Role="PosjecujeLokacije" Type="Self.PosjecujeLokacije" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gradovi">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PosjecujeLokacije">
+              <PropertyRef Name="GradId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PosjecujeLokacije_Linije_LinijeId">
+          <End Role="Linije" Type="Self.Linije" Multiplicity="1" />
+          <End Role="PosjecujeLokacije" Type="Self.PosjecujeLokacije" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Linije">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PosjecujeLokacije">
+              <PropertyRef Name="LinijeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PosjedujeAutobuse_Autobusi_AutobusId">
+          <End Role="Autobusi" Type="Self.Autobusi" Multiplicity="1" />
+          <End Role="PosjedujeAutobuse" Type="Self.PosjedujeAutobuse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Autobusi">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PosjedujeAutobuse">
+              <PropertyRef Name="AutobusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PosjedujeAutobuse_Prevoznici_PrevoznikId">
+          <End Role="Prevoznici" Type="Self.Prevoznici" Multiplicity="1" />
+          <End Role="PosjedujeAutobuse" Type="Self.PosjedujeAutobuse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Prevoznici">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PosjedujeAutobuse">
+              <PropertyRef Name="PrevoznikId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Recenzije_Karte_KartaId">
+          <End Role="Karte" Type="Self.Karte" Multiplicity="0..1" />
+          <End Role="Recenzije" Type="Self.Recenzije" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Karte">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Recenzije">
+              <PropertyRef Name="KartaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Recenzije_Korisnici_KlijentiId">
+          <End Role="Korisnici" Type="Self.Korisnici" Multiplicity="0..1" />
+          <End Role="Recenzije" Type="Self.Recenzije" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Korisnici">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Recenzije">
+              <PropertyRef Name="KlijentiId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SaobracajniDnevnik_Korisnici_UposlenikId">
+          <End Role="Korisnici" Type="Self.Korisnici" Multiplicity="1" />
+          <End Role="SaobracajniDnevnik" Type="Self.SaobracajniDnevnik" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Korisnici">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SaobracajniDnevnik">
+              <PropertyRef Name="UposlenikId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SaobracajniDnevnik_Stanice_StanicaId">
+          <End Role="Stanice" Type="Self.Stanice" Multiplicity="1" />
+          <End Role="SaobracajniDnevnik" Type="Self.SaobracajniDnevnik" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Stanice">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SaobracajniDnevnik">
+              <PropertyRef Name="StanicaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Stanice_Gradovi_GradId">
+          <End Role="Gradovi" Type="Self.Gradovi" Multiplicity="1" />
+          <End Role="Stanice" Type="Self.Stanice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gradovi">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Stanice">
+              <PropertyRef Name="GradId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TransakcijaStavke_Karte_KartaId">
+          <End Role="Karte" Type="Self.Karte" Multiplicity="1" />
+          <End Role="TransakcijaStavke" Type="Self.TransakcijaStavke" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Karte">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TransakcijaStavke">
+              <PropertyRef Name="KartaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TransakcijaStavke_Popusti_PopustId">
+          <End Role="Popusti" Type="Self.Popusti" Multiplicity="0..1" />
+          <End Role="TransakcijaStavke" Type="Self.TransakcijaStavke" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Popusti">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TransakcijaStavke">
+              <PropertyRef Name="PopustId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TransakcijaStavke_Transakcije_TransakcijaId">
+          <End Role="Transakcije" Type="Self.Transakcije" Multiplicity="1" />
+          <End Role="TransakcijaStavke" Type="Self.TransakcijaStavke" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Transakcije">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TransakcijaStavke">
+              <PropertyRef Name="TransakcijaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Transakcije_Kartice_KarticaId">
+          <End Role="Kartice" Type="Self.Kartice" Multiplicity="1" />
+          <End Role="Transakcije" Type="Self.Transakcije" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kartice">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Transakcije">
+              <PropertyRef Name="KarticaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Transakcije_Korisnici_KlijentiId">
+          <End Role="Korisnici" Type="Self.Korisnici" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Transakcije" Type="Self.Transakcije" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Korisnici">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Transakcije">
+              <PropertyRef Name="KlijentiId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="Procedure" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="param1" Type="int" Mode="In" />
+          <Parameter Name="param2" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_Add_Bus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="p1744">
+          <Parameter Name="busSeats" Type="int" Mode="In" />
+          <Parameter Name="manufacturer" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="typeOfBusId" Type="int" Mode="In" />
+          <Parameter Name="registration" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="usp_Add_Bus_Picture" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="p1744">
+          <Parameter Name="picture" Type="varbinary(max)" Mode="In" />
+          <Parameter Name="busId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_Add_City_That_Line_Pass" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="p1744">
+          <Parameter Name="lineId" Type="int" Mode="In" />
+          <Parameter Name="priceFromStart" Type="float" Mode="In" />
+          <Parameter Name="cityId" Type="int" Mode="In" />
+          <Parameter Name="comingTime" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="isDeleted" Type="bit" Mode="In" />
+          <Parameter Name="priceFromCurent" Type="float" Mode="In" />
+          <Parameter Name="typeCard" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="usp_Add_Coming_Bus_On_Station" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="p1744">
+          <Parameter Name="employeeId" Type="int" Mode="In" />
+          <Parameter Name="stationId" Type="int" Mode="In" />
+          <Parameter Name="timeOfDelay" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="timeOfComingOnStation" Type="datetime" Mode="In" />
+          <Parameter Name="isLateOnStation" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="usp_Add_Discount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="p1744">
+          <Parameter Name="discountNumber" Type="float" Mode="In" />
+          <Parameter Name="dateExpiracy" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="usp_Add_Discount_On_Line" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="p1744">
+          <Parameter Name="DiscountId" Type="int" Mode="In" />
+          <Parameter Name="LineId" Type="int" Mode="In" />
+          <Parameter Name="Text" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="usp_Add_Info_Notification" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="p1744">
+          <Parameter Name="LinijaId" Type="int" Mode="In" />
+          <Parameter Name="Tekst" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="usp_Add_Relation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="p1744">
+          <Parameter Name="startCityId" Type="int" Mode="In" />
+          <Parameter Name="destinationCityId" Type="int" Mode="In" />
+          <Parameter Name="Name" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="TravelerId" Type="int" Mode="In" />
+          <Parameter Name="typeOfLine" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="startTime" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="usp_Delete_City_That_Line_Pass" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="p1744">
+          <Parameter Name="cityLineId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_Edit_Notification" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="p1744">
+          <Parameter Name="tableName" Type="nvarchar" Mode="In" />
+          <Parameter Name="Text" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_Edit_Relation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="p1744">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="startCityId" Type="int" Mode="In" />
+          <Parameter Name="destinationCityId" Type="int" Mode="In" />
+          <Parameter Name="Name" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="travelerId" Type="int" Mode="In" />
+          <Parameter Name="lineType" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="startTime" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="usp_Edit_Users_Hash" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="p1744">
+          <Parameter Name="hash" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="usp_Get_All_Bus_Names" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="p1744" />
+        <Function Name="usp_Get_All_Cities" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="p1744" />
+        <Function Name="usp_Get_All_Notifications" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="p1744" />
+        <Function Name="usp_Get_All_Relations" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="p1744" />
+        <Function Name="usp_Get_Cities_That_Line_Passes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="p1744">
+          <Parameter Name="LineId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_Get_Line_Earnings" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="p1744" />
+        <Function Name="usp_Get_Lines_With_Traveler" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="p1744" />
+        <Function Name="usp_Get_Reservation_Counter_On_Line" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="p1744" />
+        <Function Name="usp_Get_Station_By_City" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="p1744">
+          <Parameter Name="cityId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_Get_Travelers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="p1744" />
+        <Function Name="usp_Get_Types_Of_Buses" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="p1744" />
+        <Function Name="usp_Get_User" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="p1744">
+          <Parameter Name="username" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="usp_GetAllUsers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="p1744" />
+        <Function Name="usp_Make_Relation_Un_Active" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="p1744">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_mobile_Add_User" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="p1744">
+          <Parameter Name="username" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="hash" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="name" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="surname" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="datetimebirth" Type="datetime" Mode="In" />
+          <Parameter Name="jobtitle" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="email" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="isValid" Type="bit" Mode="In" />
+          <Parameter Name="userRole" Type="int" Mode="In" />
+          <Parameter Name="discriminator" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="gender" Type="nvarchar" Mode="In" />
+          <Parameter Name="salt" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="usp_mobile_Add_User_Recension" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="p1744">
+          <Parameter Name="ticketId" Type="int" Mode="In" />
+          <Parameter Name="userId" Type="int" Mode="In" />
+          <Parameter Name="rateValue" Type="float" Mode="In" />
+          <Parameter Name="rateString" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="usp_mobile_Add_User_Transaction" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="p1744">
+          <Parameter Name="dateShopping" Type="datetime" Mode="In" />
+          <Parameter Name="transactionNumber" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="status" Type="nvarchar" Mode="In" />
+          <Parameter Name="canceled" Type="bit" Mode="In" />
+          <Parameter Name="userId" Type="int" Mode="In" />
+          <Parameter Name="cardId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_mobile_Add_User_Transaction_Detail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="p1744">
+          <Parameter Name="transactionId" Type="int" Mode="In" />
+          <Parameter Name="busCard" Type="int" Mode="In" />
+          <Parameter Name="quantityOfCards" Type="int" Mode="In" />
+          <Parameter Name="price" Type="real" Mode="In" />
+        </Function>
+        <Function Name="usp_mobile_Add_User_Travel" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="p1744">
+          <Parameter Name="cardActive" Type="bit" Mode="In" />
+          <Parameter Name="ticketRandomNumber" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="numberOfSeat" Type="nvarchar" Mode="In" />
+          <Parameter Name="datetimeOfTravel" Type="datetime" Mode="In" />
+          <Parameter Name="locationVisitingId" Type="int" Mode="In" />
+          <Parameter Name="cardTypeId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_mobile_Cancel_Transaction" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="p1744">
+          <Parameter Name="transactionId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_mobile_Check_For_Recension_It_Exists" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="p1744">
+          <Parameter Name="ticketId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_mobile_Get_All_User_Finished_Travels" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="p1744">
+          <Parameter Name="userId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_mobile_Get_All_User_Transactions" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="p1744">
+          <Parameter Name="userId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_mobile_Get_Available_Places_Bus_At_Date" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="p1744">
+          <Parameter Name="dateReservation" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="usp_mobile_Get_Buses_Information" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="p1744">
+          <Parameter Name="lineId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_mobile_Get_Cite_That_Line_Pass_By_Id" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="p1744">
+          <Parameter Name="relationId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_mobile_Get_Line_Discounts" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="p1744">
+          <Parameter Name="lineId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_mobile_Get_Relation_Offer_Information" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="p1744">
+          <Parameter Name="offerId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_mobile_Get_User" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="p1744">
+          <Parameter Name="username" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="usp_mobile_Get_User_Credit_Cards" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="p1744">
+          <Parameter Name="userId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_mobile_Recommender_Load_Rates" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="p1744">
+          <Parameter Name="relationId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_mobile_Recommnder_Load_Relations_Different_Than_Current" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="p1744">
+          <Parameter Name="relationId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_mobile_Search_Lines" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="p1744">
+          <Parameter Name="startStation" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="endStation" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="traveler" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="startTime" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="timeOfComing" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="usp_Search_Buses" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="p1744">
+          <Parameter Name="travelerId" Type="int" Mode="In" />
+          <Parameter Name="typeOfBus" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_Update_City_That_Line_Pass" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="p1744">
+          <Parameter Name="lineId" Type="int" Mode="In" />
+          <Parameter Name="CityPassingLineId" Type="int" Mode="In" />
+          <Parameter Name="priceFromStart" Type="float" Mode="In" />
+          <Parameter Name="cityId" Type="int" Mode="In" />
+          <Parameter Name="comingTime" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="isDeleted" Type="bit" Mode="In" />
+          <Parameter Name="priceFromCurent" Type="float" Mode="In" />
+          <Parameter Name="typeCard" Type="bit" Mode="In" />
+        </Function>
+        <EntityContainer Name="p1744_ModelStoreContainer">
+          <EntitySet Name="__EFMigrationsHistory" EntityType="Self.__EFMigrationsHistory" Schema="p1744" store:Type="Tables" />
+          <EntitySet Name="Autobusi" EntityType="Self.Autobusi" Schema="p1744" store:Type="Tables" />
+          <EntitySet Name="AutorizacijskiToken" EntityType="Self.AutorizacijskiToken" Schema="p1744" store:Type="Tables" />
+          <EntitySet Name="Drzave" EntityType="Self.Drzave" Schema="p1744" store:Type="Tables" />
+          <EntitySet Name="Gradovi" EntityType="Self.Gradovi" Schema="p1744" store:Type="Tables" />
+          <EntitySet Name="Karte" EntityType="Self.Karte" Schema="p1744" store:Type="Tables" />
+          <EntitySet Name="Kartice" EntityType="Self.Kartice" Schema="p1744" store:Type="Tables" />
+          <EntitySet Name="Korisnici" EntityType="Self.Korisnici" Schema="p1744" store:Type="Tables" />
+          <EntitySet Name="KretanjeAutobusa" EntityType="Self.KretanjeAutobusa" Schema="p1744" store:Type="Tables" />
+          <EntitySet Name="Linije" EntityType="Self.Linije" Schema="p1744" store:Type="Tables" />
+          <EntitySet Name="Obavijesti" EntityType="Self.Obavijesti" Schema="p1744" store:Type="Tables" />
+          <EntitySet Name="Popusti" EntityType="Self.Popusti" Schema="p1744" store:Type="Tables" />
+          <EntitySet Name="PopustNaLiniji" EntityType="Self.PopustNaLiniji" Schema="p1744" store:Type="Tables" />
+          <EntitySet Name="PosjecujeLokacije" EntityType="Self.PosjecujeLokacije" Schema="p1744" store:Type="Tables" />
+          <EntitySet Name="PosjedujeAutobuse" EntityType="Self.PosjedujeAutobuse" Schema="p1744" store:Type="Tables" />
+          <EntitySet Name="Prevoznici" EntityType="Self.Prevoznici" Schema="p1744" store:Type="Tables" />
+          <EntitySet Name="Recenzije" EntityType="Self.Recenzije" Schema="p1744" store:Type="Tables" />
+          <EntitySet Name="SaobracajniDnevnik" EntityType="Self.SaobracajniDnevnik" Schema="p1744" store:Type="Tables" />
+          <EntitySet Name="SredstvoPlacanja" EntityType="Self.SredstvoPlacanja" Schema="p1744" store:Type="Tables" />
+          <EntitySet Name="Stanice" EntityType="Self.Stanice" Schema="p1744" store:Type="Tables" />
+          <EntitySet Name="TipoviKarte" EntityType="Self.TipoviKarte" Schema="p1744" store:Type="Tables" />
+          <EntitySet Name="TransakcijaStavke" EntityType="Self.TransakcijaStavke" Schema="p1744" store:Type="Tables" />
+          <EntitySet Name="Transakcije" EntityType="Self.Transakcije" Schema="p1744" store:Type="Tables" />
+          <EntitySet Name="Uloge" EntityType="Self.Uloge" Schema="p1744" store:Type="Tables" />
+          <EntitySet Name="VrstaAutobusa" EntityType="Self.VrstaAutobusa" Schema="p1744" store:Type="Tables" />
+          <AssociationSet Name="FK__Obavijest__Linij__39E294A9" Association="Self.FK__Obavijest__Linij__39E294A9">
+            <End Role="Linije" EntitySet="Linije" />
+            <End Role="Obavijesti" EntitySet="Obavijesti" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Autobusi_VrstaAutobusa_VrstaAutobusaId" Association="Self.FK_Autobusi_VrstaAutobusa_VrstaAutobusaId">
+            <End Role="VrstaAutobusa" EntitySet="VrstaAutobusa" />
+            <End Role="Autobusi" EntitySet="Autobusi" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AutorizacijskiToken_Korisnici_KorisnikId" Association="Self.FK_AutorizacijskiToken_Korisnici_KorisnikId">
+            <End Role="Korisnici" EntitySet="Korisnici" />
+            <End Role="AutorizacijskiToken" EntitySet="AutorizacijskiToken" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Gradovi_Drzave_DrzavaId" Association="Self.FK_Gradovi_Drzave_DrzavaId">
+            <End Role="Drzave" EntitySet="Drzave" />
+            <End Role="Gradovi" EntitySet="Gradovi" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Karte_PosjecujeLokacije_PosjecujeLokacijeId" Association="Self.FK_Karte_PosjecujeLokacije_PosjecujeLokacijeId">
+            <End Role="PosjecujeLokacije" EntitySet="PosjecujeLokacije" />
+            <End Role="Karte" EntitySet="Karte" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Karte_TipoviKarte_TipKarteId" Association="Self.FK_Karte_TipoviKarte_TipKarteId">
+            <End Role="TipoviKarte" EntitySet="TipoviKarte" />
+            <End Role="Karte" EntitySet="Karte" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Kartice_Korisnici_KlijentiId" Association="Self.FK_Kartice_Korisnici_KlijentiId">
+            <End Role="Korisnici" EntitySet="Korisnici" />
+            <End Role="Kartice" EntitySet="Kartice" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Kartice_SredstvoPlacanja_SredstvoPlacanjaId" Association="Self.FK_Kartice_SredstvoPlacanja_SredstvoPlacanjaId">
+            <End Role="SredstvoPlacanja" EntitySet="SredstvoPlacanja" />
+            <End Role="Kartice" EntitySet="Kartice" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Korisnici_Uloge_UlogeId" Association="Self.FK_Korisnici_Uloge_UlogeId">
+            <End Role="Uloge" EntitySet="Uloge" />
+            <End Role="Korisnici" EntitySet="Korisnici" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KretanjeAutobusa_Autobusi_AutobusId" Association="Self.FK_KretanjeAutobusa_Autobusi_AutobusId">
+            <End Role="Autobusi" EntitySet="Autobusi" />
+            <End Role="KretanjeAutobusa" EntitySet="KretanjeAutobusa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KretanjeAutobusa_Linije_LinijeId" Association="Self.FK_KretanjeAutobusa_Linije_LinijeId">
+            <End Role="Linije" EntitySet="Linije" />
+            <End Role="KretanjeAutobusa" EntitySet="KretanjeAutobusa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Linije_Autobusi_AutobusId" Association="Self.FK_Linije_Autobusi_AutobusId">
+            <End Role="Autobusi" EntitySet="Autobusi" />
+            <End Role="Linije" EntitySet="Linije" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Linije_Gradovi_DestinacijaId" Association="Self.FK_Linije_Gradovi_DestinacijaId">
+            <End Role="Gradovi" EntitySet="Gradovi" />
+            <End Role="Linije" EntitySet="Linije" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Linije_Gradovi_PolazakId" Association="Self.FK_Linije_Gradovi_PolazakId">
+            <End Role="Gradovi" EntitySet="Gradovi" />
+            <End Role="Linije" EntitySet="Linije" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Linije_Prevoznici_PrevoznikId" Association="Self.FK_Linije_Prevoznici_PrevoznikId">
+            <End Role="Prevoznici" EntitySet="Prevoznici" />
+            <End Role="Linije" EntitySet="Linije" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PopustNaLiniji_Linije_LinijeId" Association="Self.FK_PopustNaLiniji_Linije_LinijeId">
+            <End Role="Linije" EntitySet="Linije" />
+            <End Role="PopustNaLiniji" EntitySet="PopustNaLiniji" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PopustNaLiniji_Popusti_PopustId" Association="Self.FK_PopustNaLiniji_Popusti_PopustId">
+            <End Role="Popusti" EntitySet="Popusti" />
+            <End Role="PopustNaLiniji" EntitySet="PopustNaLiniji" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PosjecujeLokacije_Gradovi_GradId" Association="Self.FK_PosjecujeLokacije_Gradovi_GradId">
+            <End Role="Gradovi" EntitySet="Gradovi" />
+            <End Role="PosjecujeLokacije" EntitySet="PosjecujeLokacije" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PosjecujeLokacije_Linije_LinijeId" Association="Self.FK_PosjecujeLokacije_Linije_LinijeId">
+            <End Role="Linije" EntitySet="Linije" />
+            <End Role="PosjecujeLokacije" EntitySet="PosjecujeLokacije" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PosjedujeAutobuse_Autobusi_AutobusId" Association="Self.FK_PosjedujeAutobuse_Autobusi_AutobusId">
+            <End Role="Autobusi" EntitySet="Autobusi" />
+            <End Role="PosjedujeAutobuse" EntitySet="PosjedujeAutobuse" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PosjedujeAutobuse_Prevoznici_PrevoznikId" Association="Self.FK_PosjedujeAutobuse_Prevoznici_PrevoznikId">
+            <End Role="Prevoznici" EntitySet="Prevoznici" />
+            <End Role="PosjedujeAutobuse" EntitySet="PosjedujeAutobuse" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Recenzije_Karte_KartaId" Association="Self.FK_Recenzije_Karte_KartaId">
+            <End Role="Karte" EntitySet="Karte" />
+            <End Role="Recenzije" EntitySet="Recenzije" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Recenzije_Korisnici_KlijentiId" Association="Self.FK_Recenzije_Korisnici_KlijentiId">
+            <End Role="Korisnici" EntitySet="Korisnici" />
+            <End Role="Recenzije" EntitySet="Recenzije" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SaobracajniDnevnik_Korisnici_UposlenikId" Association="Self.FK_SaobracajniDnevnik_Korisnici_UposlenikId">
+            <End Role="Korisnici" EntitySet="Korisnici" />
+            <End Role="SaobracajniDnevnik" EntitySet="SaobracajniDnevnik" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SaobracajniDnevnik_Stanice_StanicaId" Association="Self.FK_SaobracajniDnevnik_Stanice_StanicaId">
+            <End Role="Stanice" EntitySet="Stanice" />
+            <End Role="SaobracajniDnevnik" EntitySet="SaobracajniDnevnik" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Stanice_Gradovi_GradId" Association="Self.FK_Stanice_Gradovi_GradId">
+            <End Role="Gradovi" EntitySet="Gradovi" />
+            <End Role="Stanice" EntitySet="Stanice" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TransakcijaStavke_Karte_KartaId" Association="Self.FK_TransakcijaStavke_Karte_KartaId">
+            <End Role="Karte" EntitySet="Karte" />
+            <End Role="TransakcijaStavke" EntitySet="TransakcijaStavke" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TransakcijaStavke_Popusti_PopustId" Association="Self.FK_TransakcijaStavke_Popusti_PopustId">
+            <End Role="Popusti" EntitySet="Popusti" />
+            <End Role="TransakcijaStavke" EntitySet="TransakcijaStavke" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TransakcijaStavke_Transakcije_TransakcijaId" Association="Self.FK_TransakcijaStavke_Transakcije_TransakcijaId">
+            <End Role="Transakcije" EntitySet="Transakcije" />
+            <End Role="TransakcijaStavke" EntitySet="TransakcijaStavke" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Transakcije_Kartice_KarticaId" Association="Self.FK_Transakcije_Kartice_KarticaId">
+            <End Role="Kartice" EntitySet="Kartice" />
+            <End Role="Transakcije" EntitySet="Transakcije" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Transakcije_Korisnici_KlijentiId" Association="Self.FK_Transakcije_Korisnici_KlijentiId">
+            <End Role="Korisnici" EntitySet="Korisnici" />
+            <End Role="Transakcije" EntitySet="Transakcije" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="p1744_Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="C__EFMigrationsHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+          </Key>
+          <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Autobusi">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="brojSjedistaBusa" Type="Int32" Nullable="false" />
+          <Property Name="Proizvodjac" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="slikaAutobusa" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="VrstaAutobusaId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="VrstaAutobusa" Relationship="Self.FK_Autobusi_VrstaAutobusa_VrstaAutobusaId" FromRole="Autobusi" ToRole="VrstaAutobusa" />
+          <NavigationProperty Name="KretanjeAutobusa" Relationship="Self.FK_KretanjeAutobusa_Autobusi_AutobusId" FromRole="Autobusi" ToRole="KretanjeAutobusa" />
+          <NavigationProperty Name="Linije" Relationship="Self.FK_Linije_Autobusi_AutobusId" FromRole="Autobusi" ToRole="Linije" />
+          <NavigationProperty Name="PosjedujeAutobuse" Relationship="Self.FK_PosjedujeAutobuse_Autobusi_AutobusId" FromRole="Autobusi" ToRole="PosjedujeAutobuse" />
+          <Property Name="RegOznake" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="AutorizacijskiToken">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Vrijednost" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="KorisnikId" Type="Int32" Nullable="false" />
+          <Property Name="VrijemeEvidentiranja" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="IpAdresa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Korisnici" Relationship="p1744_Model.FK_AutorizacijskiToken_Korisnici_KorisnikId" FromRole="AutorizacijskiToken" ToRole="Korisnici" />
+        </EntityType>
+        <EntityType Name="Drzave">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Naziv" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Gradovi" Relationship="Self.FK_Gradovi_Drzave_DrzavaId" FromRole="Drzave" ToRole="Gradovi" />
+        </EntityType>
+        <EntityType Name="Gradovi">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Naziv" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DrzavaId" Type="Int32" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Drzave" Relationship="Self.FK_Gradovi_Drzave_DrzavaId" FromRole="Gradovi" ToRole="Drzave" />
+          <NavigationProperty Name="Linije" Relationship="Self.FK_Linije_Gradovi_DestinacijaId" FromRole="Gradovi" ToRole="Linije" />
+          <NavigationProperty Name="Linije1" Relationship="Self.FK_Linije_Gradovi_PolazakId" FromRole="Gradovi" ToRole="Linije" />
+          <NavigationProperty Name="PosjecujeLokacije" Relationship="Self.FK_PosjecujeLokacije_Gradovi_GradId" FromRole="Gradovi" ToRole="PosjecujeLokacije" />
+          <NavigationProperty Name="Stanice" Relationship="Self.FK_Stanice_Gradovi_GradId" FromRole="Gradovi" ToRole="Stanice" />
+        </EntityType>
+        <EntityType Name="Karte">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BrojKarte" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="datumPutovanja" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="brojSjedista" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Aktivna" Type="Boolean" Nullable="false" />
+          <Property Name="TipKarteId" Type="Int32" Nullable="false" />
+          <Property Name="PosjecujeLokacijeId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="PosjecujeLokacije" Relationship="Self.FK_Karte_PosjecujeLokacije_PosjecujeLokacijeId" FromRole="Karte" ToRole="PosjecujeLokacije" />
+          <NavigationProperty Name="TipoviKarte" Relationship="Self.FK_Karte_TipoviKarte_TipKarteId" FromRole="Karte" ToRole="TipoviKarte" />
+          <NavigationProperty Name="Recenzije" Relationship="Self.FK_Recenzije_Karte_KartaId" FromRole="Karte" ToRole="Recenzije" />
+          <NavigationProperty Name="TransakcijaStavke" Relationship="Self.FK_TransakcijaStavke_Karte_KartaId" FromRole="Karte" ToRole="TransakcijaStavke" />
+        </EntityType>
+        <EntityType Name="Kartice">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BrojKartice" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="datumIsteka" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="Banka" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="vrstaKartice" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="StanjeRacuna" Type="Single" Nullable="false" />
+          <Property Name="SredstvoPlacanjaId" Type="Int32" Nullable="false" />
+          <Property Name="KlijentiId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="SredstvoPlacanja" Relationship="Self.FK_Kartice_SredstvoPlacanja_SredstvoPlacanjaId" FromRole="Kartice" ToRole="SredstvoPlacanja" />
+          <NavigationProperty Name="Transakcije" Relationship="Self.FK_Transakcije_Kartice_KarticaId" FromRole="Kartice" ToRole="Transakcije" />
+          <NavigationProperty Name="Korisnici" Relationship="p1744_Model.FK_Kartice_Korisnici_KlijentiId" FromRole="Kartice" ToRole="Korisnici" />
+        </EntityType>
+        <EntityType Name="KretanjeAutobusa">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TrajanjePuta" Type="Single" Nullable="false" />
+          <Property Name="LinijeId" Type="Int32" Nullable="false" />
+          <Property Name="AutobusId" Type="Int32" Nullable="false" />
+          <Property Name="vrijemePolaska" Type="DateTime" Nullable="false" Precision="7" />
+          <NavigationProperty Name="Autobusi" Relationship="Self.FK_KretanjeAutobusa_Autobusi_AutobusId" FromRole="KretanjeAutobusa" ToRole="Autobusi" />
+          <NavigationProperty Name="Linije" Relationship="Self.FK_KretanjeAutobusa_Linije_LinijeId" FromRole="KretanjeAutobusa" ToRole="Linije" />
+        </EntityType>
+        <EntityType Name="Linije">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Naziv" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TipLinije" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RedniBrojLinije" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PrevoznikId" Type="Int32" Nullable="false" />
+          <Property Name="PolazakId" Type="Int32" Nullable="false" />
+          <Property Name="DestinacijaId" Type="Int32" Nullable="false" />
+          <Property Name="vrijemePolaska" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AutobusId" Type="Int32" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Autobusi" Relationship="Self.FK_Linije_Autobusi_AutobusId" FromRole="Linije" ToRole="Autobusi" />
+          <NavigationProperty Name="Gradovi" Relationship="Self.FK_Linije_Gradovi_DestinacijaId" FromRole="Linije" ToRole="Gradovi" />
+          <NavigationProperty Name="Gradovi1" Relationship="Self.FK_Linije_Gradovi_PolazakId" FromRole="Linije" ToRole="Gradovi" />
+          <NavigationProperty Name="KretanjeAutobusa" Relationship="Self.FK_KretanjeAutobusa_Linije_LinijeId" FromRole="Linije" ToRole="KretanjeAutobusa" />
+          <NavigationProperty Name="Prevoznici" Relationship="Self.FK_Linije_Prevoznici_PrevoznikId" FromRole="Linije" ToRole="Prevoznici" />
+          <NavigationProperty Name="PopustNaLiniji" Relationship="Self.FK_PopustNaLiniji_Linije_LinijeId" FromRole="Linije" ToRole="PopustNaLiniji" />
+          <NavigationProperty Name="PosjecujeLokacije" Relationship="Self.FK_PosjecujeLokacije_Linije_LinijeId" FromRole="Linije" ToRole="PosjecujeLokacije" />
+          <NavigationProperty Name="Obavijesti" Relationship="p1744_Model.FK__Obavijest__Linij__39E294A9" FromRole="Linije" ToRole="Obavijesti" />
+        </EntityType>
+        <EntityType Name="Popusti">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="vrstaPopusta" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Postotak" Type="Single" Nullable="false" />
+          <Property Name="DatumVazenjaPopusta" Type="DateTime" Nullable="false" Precision="7" />
+          <NavigationProperty Name="PopustNaLiniji" Relationship="Self.FK_PopustNaLiniji_Popusti_PopustId" FromRole="Popusti" ToRole="PopustNaLiniji" />
+          <NavigationProperty Name="TransakcijaStavke" Relationship="Self.FK_TransakcijaStavke_Popusti_PopustId" FromRole="Popusti" ToRole="TransakcijaStavke" />
+        </EntityType>
+        <EntityType Name="PopustNaLiniji">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PopustId" Type="Int32" Nullable="false" />
+          <Property Name="LinijeId" Type="Int32" Nullable="false" />
+          <Property Name="Opis" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Linije" Relationship="Self.FK_PopustNaLiniji_Linije_LinijeId" FromRole="PopustNaLiniji" ToRole="Linije" />
+          <NavigationProperty Name="Popusti" Relationship="Self.FK_PopustNaLiniji_Popusti_PopustId" FromRole="PopustNaLiniji" ToRole="Popusti" />
+        </EntityType>
+        <EntityType Name="PosjecujeLokacije">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cijenaOdPolaska" Type="Single" Nullable="false" />
+          <Property Name="LinijeId" Type="Int32" Nullable="false" />
+          <Property Name="GradId" Type="Int32" Nullable="false" />
+          <Property Name="vrijemeDolaska" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Gradovi" Relationship="Self.FK_PosjecujeLokacije_Gradovi_GradId" FromRole="PosjecujeLokacije" ToRole="Gradovi" />
+          <NavigationProperty Name="Karte" Relationship="Self.FK_Karte_PosjecujeLokacije_PosjecujeLokacijeId" FromRole="PosjecujeLokacije" ToRole="Karte" />
+          <NavigationProperty Name="Linije" Relationship="Self.FK_PosjecujeLokacije_Linije_LinijeId" FromRole="PosjecujeLokacije" ToRole="Linije" />
+          <Property Name="CijenaOdTrenutnogGradaDoDestinacije" Type="Double" />
+          <Property Name="isStudentska" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="PosjedujeAutobuse">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PrevoznikId" Type="Int32" Nullable="false" />
+          <Property Name="AutobusId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Autobusi" Relationship="Self.FK_PosjedujeAutobuse_Autobusi_AutobusId" FromRole="PosjedujeAutobuse" ToRole="Autobusi" />
+          <NavigationProperty Name="Prevoznici" Relationship="Self.FK_PosjedujeAutobuse_Prevoznici_PrevoznikId" FromRole="PosjedujeAutobuse" ToRole="Prevoznici" />
+        </EntityType>
+        <EntityType Name="Prevoznici">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Naziv" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="KontaktTelefon" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="webStranica" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Linije" Relationship="Self.FK_Linije_Prevoznici_PrevoznikId" FromRole="Prevoznici" ToRole="Linije" />
+          <NavigationProperty Name="PosjedujeAutobuse" Relationship="Self.FK_PosjedujeAutobuse_Prevoznici_PrevoznikId" FromRole="Prevoznici" ToRole="PosjedujeAutobuse" />
+        </EntityType>
+        <EntityType Name="Recenzije">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ocjena" Type="Int32" Nullable="false" />
+          <Property Name="Opis" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Komentar" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="KlijentiId" Type="Int32" />
+          <Property Name="KartaId" Type="Int32" />
+          <NavigationProperty Name="Karte" Relationship="Self.FK_Recenzije_Karte_KartaId" FromRole="Recenzije" ToRole="Karte" />
+          <NavigationProperty Name="Korisnici" Relationship="p1744_Model.FK_Recenzije_Korisnici_KlijentiId" FromRole="Recenzije" ToRole="Korisnici" />
+        </EntityType>
+        <EntityType Name="SredstvoPlacanja">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tip" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Kartice" Relationship="Self.FK_Kartice_SredstvoPlacanja_SredstvoPlacanjaId" FromRole="SredstvoPlacanja" ToRole="Kartice" />
+        </EntityType>
+        <EntityType Name="Stanice">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Naziv" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="GradId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Gradovi" Relationship="Self.FK_Stanice_Gradovi_GradId" FromRole="Stanice" ToRole="Gradovi" />
+          <NavigationProperty Name="SaobracajniDnevnik" Relationship="p1744_Model.FK_SaobracajniDnevnik_Stanice_StanicaId" FromRole="Stanice" ToRole="SaobracajniDnevnik" />
+        </EntityType>
+        <EntityType Name="TipoviKarte">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tip" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Karte" Relationship="Self.FK_Karte_TipoviKarte_TipKarteId" FromRole="TipoviKarte" ToRole="Karte" />
+        </EntityType>
+        <EntityType Name="TransakcijaStavke">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Kolicina" Type="Int32" Nullable="false" />
+          <Property Name="UkupnaCijena" Type="Single" Nullable="false" />
+          <Property Name="TransakcijaId" Type="Int32" Nullable="false" />
+          <Property Name="KartaId" Type="Int32" Nullable="false" />
+          <Property Name="PopustId" Type="Int32" />
+          <NavigationProperty Name="Karte" Relationship="Self.FK_TransakcijaStavke_Karte_KartaId" FromRole="TransakcijaStavke" ToRole="Karte" />
+          <NavigationProperty Name="Popusti" Relationship="Self.FK_TransakcijaStavke_Popusti_PopustId" FromRole="TransakcijaStavke" ToRole="Popusti" />
+          <NavigationProperty Name="Transakcije" Relationship="Self.FK_TransakcijaStavke_Transakcije_TransakcijaId" FromRole="TransakcijaStavke" ToRole="Transakcije" />
+        </EntityType>
+        <EntityType Name="Transakcije">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="datumKupovine" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="brojTransakcije" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="otkazano" Type="Boolean" Nullable="false" />
+          <Property Name="KlijentiId" Type="Int32" Nullable="false" />
+          <Property Name="KarticaId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Kartice" Relationship="Self.FK_Transakcije_Kartice_KarticaId" FromRole="Transakcije" ToRole="Kartice" />
+          <NavigationProperty Name="TransakcijaStavke" Relationship="Self.FK_TransakcijaStavke_Transakcije_TransakcijaId" FromRole="Transakcije" ToRole="TransakcijaStavke" />
+          <NavigationProperty Name="Korisnici" Relationship="p1744_Model.FK_Transakcije_Korisnici_KlijentiId" FromRole="Transakcije" ToRole="Korisnici" />
+        </EntityType>
+        <EntityType Name="Uloge">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Naziv" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Opis" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Korisnici" Relationship="p1744_Model.FK_Korisnici_Uloge_UlogeId" FromRole="Uloge" ToRole="Korisnici" />
+        </EntityType>
+        <EntityType Name="VrstaAutobusa">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tip" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Autobusi" Relationship="Self.FK_Autobusi_VrstaAutobusa_VrstaAutobusaId" FromRole="VrstaAutobusa" ToRole="Autobusi" />
+        </EntityType>
+        <Association Name="FK_Autobusi_VrstaAutobusa_VrstaAutobusaId">
+          <End Role="VrstaAutobusa" Type="Self.VrstaAutobusa" Multiplicity="1" />
+          <End Role="Autobusi" Type="Self.Autobusi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VrstaAutobusa">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Autobusi">
+              <PropertyRef Name="VrstaAutobusaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KretanjeAutobusa_Autobusi_AutobusId">
+          <End Role="Autobusi" Type="Self.Autobusi" Multiplicity="1" />
+          <End Role="KretanjeAutobusa" Type="Self.KretanjeAutobusa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Autobusi">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="KretanjeAutobusa">
+              <PropertyRef Name="AutobusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Linije_Autobusi_AutobusId">
+          <End Role="Autobusi" Type="Self.Autobusi" Multiplicity="0..1" />
+          <End Role="Linije" Type="Self.Linije" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Autobusi">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Linije">
+              <PropertyRef Name="AutobusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PosjedujeAutobuse_Autobusi_AutobusId">
+          <End Role="Autobusi" Type="Self.Autobusi" Multiplicity="1" />
+          <End Role="PosjedujeAutobuse" Type="Self.PosjedujeAutobuse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Autobusi">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PosjedujeAutobuse">
+              <PropertyRef Name="AutobusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Gradovi_Drzave_DrzavaId">
+          <End Role="Drzave" Type="Self.Drzave" Multiplicity="1" />
+          <End Role="Gradovi" Type="Self.Gradovi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Drzave">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Gradovi">
+              <PropertyRef Name="DrzavaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Linije_Gradovi_DestinacijaId">
+          <End Role="Gradovi" Type="Self.Gradovi" Multiplicity="1" />
+          <End Role="Linije" Type="Self.Linije" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gradovi">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Linije">
+              <PropertyRef Name="DestinacijaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Linije_Gradovi_PolazakId">
+          <End Role="Gradovi" Type="Self.Gradovi" Multiplicity="1" />
+          <End Role="Linije" Type="Self.Linije" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gradovi">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Linije">
+              <PropertyRef Name="PolazakId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PosjecujeLokacije_Gradovi_GradId">
+          <End Role="Gradovi" Type="Self.Gradovi" Multiplicity="1" />
+          <End Role="PosjecujeLokacije" Type="Self.PosjecujeLokacije" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gradovi">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PosjecujeLokacije">
+              <PropertyRef Name="GradId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Stanice_Gradovi_GradId">
+          <End Role="Gradovi" Type="Self.Gradovi" Multiplicity="1" />
+          <End Role="Stanice" Type="Self.Stanice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gradovi">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Stanice">
+              <PropertyRef Name="GradId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Karte_PosjecujeLokacije_PosjecujeLokacijeId">
+          <End Role="PosjecujeLokacije" Type="Self.PosjecujeLokacije" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Karte" Type="Self.Karte" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PosjecujeLokacije">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Karte">
+              <PropertyRef Name="PosjecujeLokacijeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Karte_TipoviKarte_TipKarteId">
+          <End Role="TipoviKarte" Type="Self.TipoviKarte" Multiplicity="1" />
+          <End Role="Karte" Type="Self.Karte" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoviKarte">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Karte">
+              <PropertyRef Name="TipKarteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Recenzije_Karte_KartaId">
+          <End Role="Karte" Type="Self.Karte" Multiplicity="0..1" />
+          <End Role="Recenzije" Type="Self.Recenzije" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Karte">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Recenzije">
+              <PropertyRef Name="KartaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TransakcijaStavke_Karte_KartaId">
+          <End Role="Karte" Type="Self.Karte" Multiplicity="1" />
+          <End Role="TransakcijaStavke" Type="Self.TransakcijaStavke" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Karte">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TransakcijaStavke">
+              <PropertyRef Name="KartaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Kartice_SredstvoPlacanja_SredstvoPlacanjaId">
+          <End Role="SredstvoPlacanja" Type="Self.SredstvoPlacanja" Multiplicity="1" />
+          <End Role="Kartice" Type="Self.Kartice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SredstvoPlacanja">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Kartice">
+              <PropertyRef Name="SredstvoPlacanjaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Transakcije_Kartice_KarticaId">
+          <End Role="Kartice" Type="Self.Kartice" Multiplicity="1" />
+          <End Role="Transakcije" Type="Self.Transakcije" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kartice">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Transakcije">
+              <PropertyRef Name="KarticaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KretanjeAutobusa_Linije_LinijeId">
+          <End Role="Linije" Type="Self.Linije" Multiplicity="1" />
+          <End Role="KretanjeAutobusa" Type="Self.KretanjeAutobusa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Linije">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="KretanjeAutobusa">
+              <PropertyRef Name="LinijeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Linije_Prevoznici_PrevoznikId">
+          <End Role="Prevoznici" Type="Self.Prevoznici" Multiplicity="1" />
+          <End Role="Linije" Type="Self.Linije" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Prevoznici">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Linije">
+              <PropertyRef Name="PrevoznikId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PopustNaLiniji_Linije_LinijeId">
+          <End Role="Linije" Type="Self.Linije" Multiplicity="1" />
+          <End Role="PopustNaLiniji" Type="Self.PopustNaLiniji" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Linije">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PopustNaLiniji">
+              <PropertyRef Name="LinijeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PosjecujeLokacije_Linije_LinijeId">
+          <End Role="Linije" Type="Self.Linije" Multiplicity="1" />
+          <End Role="PosjecujeLokacije" Type="Self.PosjecujeLokacije" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Linije">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PosjecujeLokacije">
+              <PropertyRef Name="LinijeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PopustNaLiniji_Popusti_PopustId">
+          <End Role="Popusti" Type="Self.Popusti" Multiplicity="1" />
+          <End Role="PopustNaLiniji" Type="Self.PopustNaLiniji" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Popusti">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PopustNaLiniji">
+              <PropertyRef Name="PopustId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TransakcijaStavke_Popusti_PopustId">
+          <End Role="Popusti" Type="Self.Popusti" Multiplicity="0..1" />
+          <End Role="TransakcijaStavke" Type="Self.TransakcijaStavke" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Popusti">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TransakcijaStavke">
+              <PropertyRef Name="PopustId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PosjedujeAutobuse_Prevoznici_PrevoznikId">
+          <End Role="Prevoznici" Type="Self.Prevoznici" Multiplicity="1" />
+          <End Role="PosjedujeAutobuse" Type="Self.PosjedujeAutobuse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Prevoznici">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PosjedujeAutobuse">
+              <PropertyRef Name="PrevoznikId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TransakcijaStavke_Transakcije_TransakcijaId">
+          <End Role="Transakcije" Type="Self.Transakcije" Multiplicity="1" />
+          <End Role="TransakcijaStavke" Type="Self.TransakcijaStavke" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Transakcije">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TransakcijaStavke">
+              <PropertyRef Name="TransakcijaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="eBusStation_Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C__EFMigrationsHistory" EntityType="Self.C__EFMigrationsHistory" />
+          <EntitySet Name="Autobusi" EntityType="Self.Autobusi" />
+          <EntitySet Name="AutorizacijskiToken" EntityType="Self.AutorizacijskiToken" />
+          <EntitySet Name="Drzave" EntityType="Self.Drzave" />
+          <EntitySet Name="Gradovi" EntityType="Self.Gradovi" />
+          <EntitySet Name="Karte" EntityType="Self.Karte" />
+          <EntitySet Name="Kartice" EntityType="Self.Kartice" />
+          <EntitySet Name="KretanjeAutobusa" EntityType="Self.KretanjeAutobusa" />
+          <EntitySet Name="Linije" EntityType="Self.Linije" />
+          <EntitySet Name="Popusti" EntityType="Self.Popusti" />
+          <EntitySet Name="PopustNaLiniji" EntityType="Self.PopustNaLiniji" />
+          <EntitySet Name="PosjecujeLokacije" EntityType="Self.PosjecujeLokacije" />
+          <EntitySet Name="PosjedujeAutobuse" EntityType="Self.PosjedujeAutobuse" />
+          <EntitySet Name="Prevoznici" EntityType="Self.Prevoznici" />
+          <EntitySet Name="Recenzije" EntityType="Self.Recenzije" />
+          <EntitySet Name="SredstvoPlacanja" EntityType="Self.SredstvoPlacanja" />
+          <EntitySet Name="Stanice" EntityType="Self.Stanice" />
+          <EntitySet Name="TipoviKarte" EntityType="Self.TipoviKarte" />
+          <EntitySet Name="TransakcijaStavke" EntityType="Self.TransakcijaStavke" />
+          <EntitySet Name="Transakcije" EntityType="Self.Transakcije" />
+          <EntitySet Name="Uloge" EntityType="Self.Uloge" />
+          <EntitySet Name="VrstaAutobusa" EntityType="Self.VrstaAutobusa" />
+          <AssociationSet Name="FK_Autobusi_VrstaAutobusa_VrstaAutobusaId" Association="Self.FK_Autobusi_VrstaAutobusa_VrstaAutobusaId">
+            <End Role="VrstaAutobusa" EntitySet="VrstaAutobusa" />
+            <End Role="Autobusi" EntitySet="Autobusi" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KretanjeAutobusa_Autobusi_AutobusId" Association="Self.FK_KretanjeAutobusa_Autobusi_AutobusId">
+            <End Role="Autobusi" EntitySet="Autobusi" />
+            <End Role="KretanjeAutobusa" EntitySet="KretanjeAutobusa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Linije_Autobusi_AutobusId" Association="Self.FK_Linije_Autobusi_AutobusId">
+            <End Role="Autobusi" EntitySet="Autobusi" />
+            <End Role="Linije" EntitySet="Linije" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PosjedujeAutobuse_Autobusi_AutobusId" Association="Self.FK_PosjedujeAutobuse_Autobusi_AutobusId">
+            <End Role="Autobusi" EntitySet="Autobusi" />
+            <End Role="PosjedujeAutobuse" EntitySet="PosjedujeAutobuse" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Gradovi_Drzave_DrzavaId" Association="Self.FK_Gradovi_Drzave_DrzavaId">
+            <End Role="Drzave" EntitySet="Drzave" />
+            <End Role="Gradovi" EntitySet="Gradovi" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Linije_Gradovi_DestinacijaId" Association="Self.FK_Linije_Gradovi_DestinacijaId">
+            <End Role="Gradovi" EntitySet="Gradovi" />
+            <End Role="Linije" EntitySet="Linije" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Linije_Gradovi_PolazakId" Association="Self.FK_Linije_Gradovi_PolazakId">
+            <End Role="Gradovi" EntitySet="Gradovi" />
+            <End Role="Linije" EntitySet="Linije" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PosjecujeLokacije_Gradovi_GradId" Association="Self.FK_PosjecujeLokacije_Gradovi_GradId">
+            <End Role="Gradovi" EntitySet="Gradovi" />
+            <End Role="PosjecujeLokacije" EntitySet="PosjecujeLokacije" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Stanice_Gradovi_GradId" Association="Self.FK_Stanice_Gradovi_GradId">
+            <End Role="Gradovi" EntitySet="Gradovi" />
+            <End Role="Stanice" EntitySet="Stanice" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Karte_PosjecujeLokacije_PosjecujeLokacijeId" Association="Self.FK_Karte_PosjecujeLokacije_PosjecujeLokacijeId">
+            <End Role="PosjecujeLokacije" EntitySet="PosjecujeLokacije" />
+            <End Role="Karte" EntitySet="Karte" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Karte_TipoviKarte_TipKarteId" Association="Self.FK_Karte_TipoviKarte_TipKarteId">
+            <End Role="TipoviKarte" EntitySet="TipoviKarte" />
+            <End Role="Karte" EntitySet="Karte" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Recenzije_Karte_KartaId" Association="Self.FK_Recenzije_Karte_KartaId">
+            <End Role="Karte" EntitySet="Karte" />
+            <End Role="Recenzije" EntitySet="Recenzije" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TransakcijaStavke_Karte_KartaId" Association="Self.FK_TransakcijaStavke_Karte_KartaId">
+            <End Role="Karte" EntitySet="Karte" />
+            <End Role="TransakcijaStavke" EntitySet="TransakcijaStavke" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Kartice_SredstvoPlacanja_SredstvoPlacanjaId" Association="Self.FK_Kartice_SredstvoPlacanja_SredstvoPlacanjaId">
+            <End Role="SredstvoPlacanja" EntitySet="SredstvoPlacanja" />
+            <End Role="Kartice" EntitySet="Kartice" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Transakcije_Kartice_KarticaId" Association="Self.FK_Transakcije_Kartice_KarticaId">
+            <End Role="Kartice" EntitySet="Kartice" />
+            <End Role="Transakcije" EntitySet="Transakcije" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KretanjeAutobusa_Linije_LinijeId" Association="Self.FK_KretanjeAutobusa_Linije_LinijeId">
+            <End Role="Linije" EntitySet="Linije" />
+            <End Role="KretanjeAutobusa" EntitySet="KretanjeAutobusa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Linije_Prevoznici_PrevoznikId" Association="Self.FK_Linije_Prevoznici_PrevoznikId">
+            <End Role="Prevoznici" EntitySet="Prevoznici" />
+            <End Role="Linije" EntitySet="Linije" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PopustNaLiniji_Linije_LinijeId" Association="Self.FK_PopustNaLiniji_Linije_LinijeId">
+            <End Role="Linije" EntitySet="Linije" />
+            <End Role="PopustNaLiniji" EntitySet="PopustNaLiniji" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PosjecujeLokacije_Linije_LinijeId" Association="Self.FK_PosjecujeLokacije_Linije_LinijeId">
+            <End Role="Linije" EntitySet="Linije" />
+            <End Role="PosjecujeLokacije" EntitySet="PosjecujeLokacije" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PopustNaLiniji_Popusti_PopustId" Association="Self.FK_PopustNaLiniji_Popusti_PopustId">
+            <End Role="Popusti" EntitySet="Popusti" />
+            <End Role="PopustNaLiniji" EntitySet="PopustNaLiniji" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TransakcijaStavke_Popusti_PopustId" Association="Self.FK_TransakcijaStavke_Popusti_PopustId">
+            <End Role="Popusti" EntitySet="Popusti" />
+            <End Role="TransakcijaStavke" EntitySet="TransakcijaStavke" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PosjedujeAutobuse_Prevoznici_PrevoznikId" Association="Self.FK_PosjedujeAutobuse_Prevoznici_PrevoznikId">
+            <End Role="Prevoznici" EntitySet="Prevoznici" />
+            <End Role="PosjedujeAutobuse" EntitySet="PosjedujeAutobuse" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TransakcijaStavke_Transakcije_TransakcijaId" Association="Self.FK_TransakcijaStavke_Transakcije_TransakcijaId">
+            <End Role="Transakcije" EntitySet="Transakcije" />
+            <End Role="TransakcijaStavke" EntitySet="TransakcijaStavke" />
+          </AssociationSet>
+          <FunctionImport Name="GetAllUsers" ReturnType="Collection(p1744_Model.usp_GetAllUsers_Result)" />
+          <FunctionImport Name="Get_UserByCredentials" ReturnType="Collection(p1744_Model.usp_Get_User_Result)">
+          <Parameter Name="username" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_Edit_Users_Hash">
+          <Parameter Name="hash" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="Korisnici" EntityType="p1744_Model.Korisnici" />
+          <AssociationSet Name="FK_AutorizacijskiToken_Korisnici_KorisnikId" Association="p1744_Model.FK_AutorizacijskiToken_Korisnici_KorisnikId">
+            <End Role="Korisnici" EntitySet="Korisnici" />
+            <End Role="AutorizacijskiToken" EntitySet="AutorizacijskiToken" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Kartice_Korisnici_KlijentiId" Association="p1744_Model.FK_Kartice_Korisnici_KlijentiId">
+            <End Role="Korisnici" EntitySet="Korisnici" />
+            <End Role="Kartice" EntitySet="Kartice" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Korisnici_Uloge_UlogeId" Association="p1744_Model.FK_Korisnici_Uloge_UlogeId">
+            <End Role="Uloge" EntitySet="Uloge" />
+            <End Role="Korisnici" EntitySet="Korisnici" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Recenzije_Korisnici_KlijentiId" Association="p1744_Model.FK_Recenzije_Korisnici_KlijentiId">
+            <End Role="Korisnici" EntitySet="Korisnici" />
+            <End Role="Recenzije" EntitySet="Recenzije" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Transakcije_Korisnici_KlijentiId" Association="p1744_Model.FK_Transakcije_Korisnici_KlijentiId">
+            <End Role="Korisnici" EntitySet="Korisnici" />
+            <End Role="Transakcije" EntitySet="Transakcije" />
+          </AssociationSet>
+          <EntitySet Name="Obavijesti" EntityType="p1744_Model.Obavijesti" />
+          <AssociationSet Name="FK__Obavijest__Linij__39E294A9" Association="p1744_Model.FK__Obavijest__Linij__39E294A9">
+            <End Role="Linije" EntitySet="Linije" />
+            <End Role="Obavijesti" EntitySet="Obavijesti" />
+          </AssociationSet>
+          <FunctionImport Name="Get_All_Relations" ReturnType="Collection(p1744_Model.usp_Get_All_Relations_Result)" />
+          <FunctionImport Name="Add_Info_Notification">
+            <Parameter Name="LinijaId" Mode="In" Type="Int32" />
+            <Parameter Name="Tekst" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Add_Discount">
+            <Parameter Name="discountNumber" Mode="In" Type="Double" />
+            <Parameter Name="dateExpiracy" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="Add_Discount_On_Line">
+            <Parameter Name="DiscountId" Mode="In" Type="Int32" />
+            <Parameter Name="LineId" Mode="In" Type="Int32" />
+            <Parameter Name="Text" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Get_All_Notifications" ReturnType="Collection(p1744_Model.usp_Get_All_Notifications_Result)" />
+          <FunctionImport Name="Edit_Notification">
+            <Parameter Name="tableName" Mode="In" Type="String" />
+            <Parameter Name="Text" Mode="In" Type="String" />
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Get_Lines_With_Traveler" ReturnType="Collection(p1744_Model.usp_Get_Lines_With_Traveler_Result)" />
+          <FunctionImport Name="Get_All_Cities" ReturnType="Collection(p1744_Model.usp_Get_All_Cities_Result)" />
+          <FunctionImport Name="Make_Relation_Un_Active">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Get_Travelers" ReturnType="Collection(p1744_Model.usp_Get_Travelers_Result)" />
+          <FunctionImport Name="Edit_Relation">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="startCityId" Mode="In" Type="Int32" />
+            <Parameter Name="destinationCityId" Mode="In" Type="Int32" />
+            <Parameter Name="Name" Mode="In" Type="String" />
+            <Parameter Name="travelerId" Mode="In" Type="Int32" />
+            <Parameter Name="lineType" Mode="In" Type="String" />
+            <Parameter Name="startTime" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Add_Relation">
+            <Parameter Name="startCityId" Mode="In" Type="Int32" />
+            <Parameter Name="destinationCityId" Mode="In" Type="Int32" />
+            <Parameter Name="Name" Mode="In" Type="String" />
+            <Parameter Name="TravelerId" Mode="In" Type="Int32" />
+            <Parameter Name="typeOfLine" Mode="In" Type="String" />
+            <Parameter Name="startTime" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Get_Cities_That_Line_Passes" ReturnType="Collection(p1744_Model.usp_Get_Cities_That_Line_Passes_Result)">
+          <Parameter Name="LineId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Add_City_That_Line_Pass">
+            <Parameter Name="lineId" Mode="In" Type="Int32" />
+            <Parameter Name="priceFromStart" Mode="In" Type="Double" />
+            <Parameter Name="cityId" Mode="In" Type="Int32" />
+            <Parameter Name="comingTime" Mode="In" Type="String" />
+            <Parameter Name="isDeleted" Mode="In" Type="Boolean" />
+            <Parameter Name="priceFromCurent" Mode="In" Type="Double" />
+            <Parameter Name="typeCard" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="Update_City_That_Line_Pass">
+            <Parameter Name="lineId" Mode="In" Type="Int32" />
+            <Parameter Name="CityPassingLineId" Mode="In" Type="Int32" />
+            <Parameter Name="priceFromStart" Mode="In" Type="Double" />
+            <Parameter Name="cityId" Mode="In" Type="Int32" />
+            <Parameter Name="comingTime" Mode="In" Type="String" />
+            <Parameter Name="isDeleted" Mode="In" Type="Boolean" />
+            <Parameter Name="priceFromCurent" Mode="In" Type="Double" />
+            <Parameter Name="typeCard" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="Delete_City_That_Line_Pass">
+          <Parameter Name="cityLineId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Get_Types_Of_Buses" ReturnType="Collection(p1744_Model.usp_Get_Types_Of_Buses_Result)" />
+          <FunctionImport Name="Search_Buses" ReturnType="Collection(p1744_Model.usp_Search_Buses_Result)">
+            <Parameter Name="travelerId" Mode="In" Type="Int32" />
+            <Parameter Name="typeOfBus" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="SaobracajniDnevnik" EntityType="p1744_Model.SaobracajniDnevnik" />
+          <AssociationSet Name="FK_SaobracajniDnevnik_Korisnici_UposlenikId" Association="p1744_Model.FK_SaobracajniDnevnik_Korisnici_UposlenikId">
+            <End Role="Korisnici" EntitySet="Korisnici" />
+            <End Role="SaobracajniDnevnik" EntitySet="SaobracajniDnevnik" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SaobracajniDnevnik_Stanice_StanicaId" Association="p1744_Model.FK_SaobracajniDnevnik_Stanice_StanicaId">
+            <End Role="Stanice" EntitySet="Stanice" />
+            <End Role="SaobracajniDnevnik" EntitySet="SaobracajniDnevnik" />
+          </AssociationSet>
+          <FunctionImport Name="Add_Coming_Bus_On_Station">
+            <Parameter Name="employeeId" Mode="In" Type="Int32" />
+            <Parameter Name="stationId" Mode="In" Type="Int32" />
+            <Parameter Name="timeOfDelay" Mode="In" Type="String" />
+            <Parameter Name="timeOfComingOnStation" Mode="In" Type="DateTime" />
+            <Parameter Name="isLateOnStation" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="Get_Station_By_City" ReturnType="Collection(Int32)">
+          <Parameter Name="cityId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_mobile_Add_User">
+            <Parameter Name="username" Mode="In" Type="String" />
+            <Parameter Name="hash" Mode="In" Type="String" />
+            <Parameter Name="name" Mode="In" Type="String" />
+            <Parameter Name="surname" Mode="In" Type="String" />
+            <Parameter Name="datetimebirth" Mode="In" Type="DateTime" />
+            <Parameter Name="jobtitle" Mode="In" Type="String" />
+            <Parameter Name="email" Mode="In" Type="String" />
+            <Parameter Name="isValid" Mode="In" Type="Boolean" />
+            <Parameter Name="userRole" Mode="In" Type="Int32" />
+            <Parameter Name="discriminator" Mode="In" Type="String" />
+            <Parameter Name="gender" Mode="In" Type="String" />
+            <Parameter Name="salt" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_mobile_Get_User" ReturnType="Collection(p1744_Model.usp_mobile_Get_User_Result)">
+          <Parameter Name="username" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_mobile_Search_Lines" ReturnType="Collection(p1744_Model.usp_mobile_Search_Lines_Result)">
+            <Parameter Name="startStation" Mode="In" Type="String" />
+            <Parameter Name="endStation" Mode="In" Type="String" />
+            <Parameter Name="traveler" Mode="In" Type="String" />
+            <Parameter Name="startTime" Mode="In" Type="String" />
+            <Parameter Name="timeOfComing" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Add_Bus_Picture">
+            <Parameter Name="picture" Mode="In" Type="Binary" />
+            <Parameter Name="busId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_mobile_Get_Buses_Information" ReturnType="Collection(p1744_Model.usp_mobile_Get_Buses_Information_Result)" >
+          <Parameter Name="lineId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_mobile_Get_Available_Places_Bus_At_Date" ReturnType="Collection(p1744_Model.usp_mobile_Get_Available_Places_Bus_At_Date_Result)">
+          <Parameter Name="dateReservation" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_mobile_Get_Relation_Offer_Information" ReturnType="Collection(p1744_Model.usp_mobile_Get_Relation_Offer_Information_Result)">
+          <Parameter Name="offerId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_mobile_Get_User_Credit_Cards" ReturnType="Collection(p1744_Model.usp_mobile_Get_User_Credit_Cards_Result)">
+          <Parameter Name="userId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_mobile_Add_User_Travel" ReturnType="Collection(Decimal)">
+            <Parameter Name="cardActive" Mode="In" Type="Boolean" />
+            <Parameter Name="ticketRandomNumber" Mode="In" Type="String" />
+            <Parameter Name="numberOfSeat" Mode="In" Type="String" />
+            <Parameter Name="datetimeOfTravel" Mode="In" Type="DateTime" />
+            <Parameter Name="locationVisitingId" Mode="In" Type="Int32" />
+            <Parameter Name="cardTypeId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_mobile_Add_User_Transaction" ReturnType="Collection(Decimal)">
+            <Parameter Name="dateShopping" Mode="In" Type="DateTime" />
+            <Parameter Name="transactionNumber" Mode="In" Type="String" />
+            <Parameter Name="status" Mode="In" Type="String" />
+            <Parameter Name="canceled" Mode="In" Type="Boolean" />
+            <Parameter Name="userId" Mode="In" Type="Int32" />
+            <Parameter Name="cardId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_mobile_Add_User_Transaction_Detail">
+            <Parameter Name="transactionId" Mode="In" Type="Int32" />
+            <Parameter Name="busCard" Mode="In" Type="Int32" />
+            <Parameter Name="quantityOfCards" Mode="In" Type="Int32" />
+            <Parameter Name="price" Mode="In" Type="Single" />
+          </FunctionImport>
+          <FunctionImport Name="usp_mobile_Get_All_User_Transactions" ReturnType="Collection(p1744_Model.usp_mobile_Get_All_User_Transactions_Result)">
+          <Parameter Name="userId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_mobile_Cancel_Transaction">
+          <Parameter Name="transactionId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_mobile_Get_All_User_Finished_Travels" ReturnType="Collection(p1744_Model.usp_mobile_Get_All_User_Finished_Travels_Result)">
+          <Parameter Name="userId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_mobile_Add_User_Recension">
+            <Parameter Name="ticketId" Mode="In" Type="Int32" />
+            <Parameter Name="userId" Mode="In" Type="Int32" />
+            <Parameter Name="rateValue" Mode="In" Type="Double" />
+            <Parameter Name="rateString" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_mobile_Get_Line_Discounts" ReturnType="Collection(p1744_Model.usp_mobile_Get_Line_Discounts_Result)">
+          <Parameter Name="lineId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_mobile_Recommender_Load_Rates" ReturnType="Collection(p1744_Model.usp_mobile_Recommender_Load_Rates_Result)">
+          <Parameter Name="relationId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_mobile_Recommnder_Load_Relations_Different_Than_Current" ReturnType="Collection(p1744_Model.usp_mobile_Recommnder_Load_Relations_Different_Than_Current_Result)">
+          <Parameter Name="relationId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_mobile_Get_Cite_That_Line_Pass_By_Id" ReturnType="Collection(p1744_Model.usp_Get_Cities_That_Line_Passes_Result)">
+          <Parameter Name="relationId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_mobile_Check_For_Recension_It_Exists" ReturnType="Collection(Int32)">
+          <Parameter Name="ticketId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Get_Line_Earnings" ReturnType="Collection(p1744_Model.usp_Get_Line_Earnings_Result)">
+          </FunctionImport>
+          <FunctionImport Name="Get_Reservation_Counter_On_Line" ReturnType="Collection(p1744_Model.usp_Get_Reservation_Counter_On_Line_Result)" />
+          <FunctionImport Name="usp_Add_Bus">
+            <Parameter Name="busSeats" Mode="In" Type="Int32" />
+            <Parameter Name="manufacturer" Mode="In" Type="String" />
+            <Parameter Name="typeOfBusId" Mode="In" Type="Int32" />
+            <Parameter Name="registration" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Get_All_Bus_Names" ReturnType="Collection(p1744_Model.Get_All_Bus_Names_Result)" />
+        </EntityContainer>
+        <ComplexType Name="Procedure_Result">
+          <Property Type="Int32" Name="Column1" Nullable="true" />
+          <Property Type="Int32" Name="Column2" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="usp_GetAllUsers_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="username" Nullable="true" />
+          <Property Type="String" Name="password" Nullable="true" />
+          <Property Type="String" Name="Ime" Nullable="true" />
+          <Property Type="String" Name="Prezime" Nullable="true" />
+          <Property Type="DateTime" Name="datumRodjenja" Nullable="false" />
+          <Property Type="String" Name="Spol" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="Telefon" Nullable="true" />
+          <Property Type="String" Name="ZemljaPorijekla" Nullable="true" />
+          <Property Type="String" Name="Discriminator" Nullable="false" />
+          <Property Type="String" Name="BrojIndeksa" Nullable="true" />
+          <Property Type="Binary" Name="slikaIndeksa" Nullable="true" />
+          <Property Type="Binary" Name="slikaPenzionerskeKartice" Nullable="true" />
+          <Property Type="Int32" Name="GodineIskustva" Nullable="true" />
+          <Property Type="String" Name="Email" Nullable="true" />
+          <Property Type="Boolean" Name="isValid" Nullable="false" />
+          <Property Type="String" Name="Zanimanje" Nullable="true" />
+          <Property Type="Int32" Name="UlogeId" Nullable="false" />
+          <Property Type="String" Name="Adresa" Nullable="true" />
+          <Property Type="String" Name="Grad" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="usp_Get_User_Result">
+          <Property Type="String" Name="Ime_prezime" Nullable="true" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Hash" Nullable="true" />
+        </ComplexType>
+        <EntityType Name="Korisnici">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Ime" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Prezime" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="datumRodjenja" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="Spol" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="Telefon" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ZemljaPorijekla" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Discriminator" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BrojIndeksa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="slikaIndeksa" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="slikaPenzionerskeKartice" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="GodineIskustva" Type="Int32" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="isValid" Type="Boolean" Nullable="false" />
+          <Property Name="Zanimanje" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UlogeId" Type="Int32" Nullable="false" />
+          <Property Name="Adresa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Grad" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Hash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AutorizacijskiToken" Relationship="p1744_Model.FK_AutorizacijskiToken_Korisnici_KorisnikId" FromRole="Korisnici" ToRole="AutorizacijskiToken" />
+          <NavigationProperty Name="Kartice" Relationship="p1744_Model.FK_Kartice_Korisnici_KlijentiId" FromRole="Korisnici" ToRole="Kartice" />
+          <NavigationProperty Name="Uloge" Relationship="p1744_Model.FK_Korisnici_Uloge_UlogeId" FromRole="Korisnici" ToRole="Uloge" />
+          <NavigationProperty Name="Recenzije" Relationship="p1744_Model.FK_Recenzije_Korisnici_KlijentiId" FromRole="Korisnici" ToRole="Recenzije" />
+          <NavigationProperty Name="Transakcije" Relationship="p1744_Model.FK_Transakcije_Korisnici_KlijentiId" FromRole="Korisnici" ToRole="Transakcije" />
+          <NavigationProperty Name="SaobracajniDnevnik" Relationship="p1744_Model.FK_SaobracajniDnevnik_Korisnici_UposlenikId" FromRole="Korisnici" ToRole="SaobracajniDnevnik" />
+          <Property Name="Salt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_AutorizacijskiToken_Korisnici_KorisnikId">
+          <End Type="p1744_Model.Korisnici" Role="Korisnici" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="p1744_Model.AutorizacijskiToken" Role="AutorizacijskiToken" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Korisnici">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AutorizacijskiToken">
+              <PropertyRef Name="KorisnikId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Kartice_Korisnici_KlijentiId">
+          <End Type="p1744_Model.Korisnici" Role="Korisnici" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="p1744_Model.Kartice" Role="Kartice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Korisnici">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Kartice">
+              <PropertyRef Name="KlijentiId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Korisnici_Uloge_UlogeId">
+          <End Type="p1744_Model.Uloge" Role="Uloge" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="p1744_Model.Korisnici" Role="Korisnici" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Uloge">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Korisnici">
+              <PropertyRef Name="UlogeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Recenzije_Korisnici_KlijentiId">
+          <End Type="p1744_Model.Korisnici" Role="Korisnici" Multiplicity="0..1" />
+          <End Type="p1744_Model.Recenzije" Role="Recenzije" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Korisnici">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Recenzije">
+              <PropertyRef Name="KlijentiId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Transakcije_Korisnici_KlijentiId">
+          <End Type="p1744_Model.Korisnici" Role="Korisnici" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="p1744_Model.Transakcije" Role="Transakcije" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Korisnici">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Transakcije">
+              <PropertyRef Name="KlijentiId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Obavijesti">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LinijaId" Type="Int32" Nullable="false" />
+          <Property Name="Tekst" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Linije" Relationship="p1744_Model.FK__Obavijest__Linij__39E294A9" FromRole="Obavijesti" ToRole="Linije" />
+        </EntityType>
+        <Association Name="FK__Obavijest__Linij__39E294A9">
+          <End Type="p1744_Model.Linije" Role="Linije" Multiplicity="1" />
+          <End Type="p1744_Model.Obavijesti" Role="Obavijesti" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Linije">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Obavijesti">
+              <PropertyRef Name="LinijaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="usp_Get_All_Relations_Result">
+          <Property Type="String" Name="Naziv" Nullable="true" />
+          <Property Type="String" Name="TipLinije" Nullable="true" />
+          <Property Type="String" Name="Prevoznik" Nullable="false" />
+          <Property Type="Int32" Name="Id" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="usp_Get_All_Notifications_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Tekst" Nullable="true" />
+          <Property Type="String" Name="Tip" Nullable="false" MaxLength="1" />
+        </ComplexType>
+        <ComplexType Name="usp_Get_Lines_With_Traveler_Result">
+          <Property Type="String" Name="Naziv_linije" Nullable="true" />
+          <Property Type="String" Name="Tip_linije" Nullable="true" />
+          <Property Type="String" Name="Prevoznik" Nullable="false" />
+          <Property Type="String" Name="Vrijeme_polaska" Nullable="true" />
+          <Property Type="Int32" Name="Id" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="usp_Get_All_Cities_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Naziv" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="usp_Get_Travelers_Result">
+          <Property Type="String" Name="Naziv" Nullable="false" />
+          <Property Type="Int32" Name="Id" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="usp_Get_Cities_That_Line_Passes_Result">
+          <Property Type="String" Name="Grad" Nullable="false" />
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Naziv" Nullable="true" />
+          <Property Type="String" Name="vrijemePolaska" Nullable="true" />
+          <Property Type="Single" Name="cijenaOdPolaska" Nullable="false" />
+          <Property Type="Time" Name="Vrijeme_dolaska" Nullable="true" />
+          <Property Type="String" Name="Tip_karte" Nullable="false" MaxLength="10" />
+          <Property Type="Double" Name="Cijena_od_grada_destinacije" Nullable="false" />
+          </ComplexType>
+        <ComplexType Name="usp_Get_Types_Of_Buses_Result">
+          <Property Type="String" Name="Tip" Nullable="true" />
+          <Property Type="Int32" Name="Id" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="usp_Search_Buses_Result">
+          <Property Type="String" Name="Autobus" Nullable="true" />
+          <Property Type="Int32" Name="AutobusId" Nullable="false" />
+          <Property Type="String" Name="Linija" Nullable="true" />
+        </ComplexType>
+        <EntityType Name="SaobracajniDnevnik">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="vrijemeDolaska" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="brojPutnogNaloga" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UposlenikId" Type="Int32" Nullable="false" />
+          <Property Name="StanicaId" Type="Int32" Nullable="false" />
+          <Property Name="daLiJeKansnio" Type="Boolean" />
+          <Property Name="vrijemeKasnjena" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Korisnici" Relationship="p1744_Model.FK_SaobracajniDnevnik_Korisnici_UposlenikId" FromRole="SaobracajniDnevnik" ToRole="Korisnici" />
+          <NavigationProperty Name="Stanice" Relationship="p1744_Model.FK_SaobracajniDnevnik_Stanice_StanicaId" FromRole="SaobracajniDnevnik" ToRole="Stanice" />
+        </EntityType>
+        <Association Name="FK_SaobracajniDnevnik_Korisnici_UposlenikId">
+          <End Type="p1744_Model.Korisnici" Role="Korisnici" Multiplicity="1" />
+          <End Type="p1744_Model.SaobracajniDnevnik" Role="SaobracajniDnevnik" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Korisnici">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SaobracajniDnevnik">
+              <PropertyRef Name="UposlenikId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SaobracajniDnevnik_Stanice_StanicaId">
+          <End Type="p1744_Model.Stanice" Role="Stanice" Multiplicity="1" />
+          <End Type="p1744_Model.SaobracajniDnevnik" Role="SaobracajniDnevnik" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Stanice">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SaobracajniDnevnik">
+              <PropertyRef Name="StanicaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="usp_mobile_Get_User_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Ime" Nullable="true" />
+          <Property Type="String" Name="Prezime" Nullable="true" />
+          <Property Type="String" Name="Hash" Nullable="true" />
+          <Property Type="String" Name="Salt" Nullable="true" />
+          <Property Type="String" Name="Zanimanje" Nullable="true" />
+          <Property Type="Binary" Name="slikaIndeksa" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="usp_mobile_Search_Lines_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="Single" Name="cijenaOdPolaska" Nullable="false" />
+          <Property Type="String" Name="vrijemeDolaska" Nullable="true" />
+          <Property Type="Double" Name="CijenaOdTrenutnogGradaDoDestinacije" Nullable="true" />
+          <Property Type="Boolean" Name="isStudentska" Nullable="true" />
+          <Property Type="String" Name="Naziv" Nullable="true" />
+          <Property Type="String" Name="TipLinije" Nullable="true" />
+          <Property Type="String" Name="Prevoznik" Nullable="false" />
+          <Property Type="String" Name="vrijemePolaska" Nullable="true" />
+          <Property Type="Int32" Name="LinijaId" Nullable="false" />
+          <Property Type="String" Name="PosjeceniGrad" Nullable="false" />
+          </ComplexType>
+        <ComplexType Name="usp_mobile_Get_Buses_Information_Result">
+          <Property Type="Int32" Name="brojSjedistaBusa" Nullable="false" />
+          <Property Type="Binary" Name="slikaAutobusa" Nullable="true" />
+          <Property Type="String" Name="Proizvodjac" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="usp_mobile_Get_Available_Places_Bus_At_Date_Result">
+          <Property Type="Boolean" Name="Aktivna" Nullable="false" />
+          <Property Type="String" Name="brojSjedista" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="usp_mobile_Get_Relation_Offer_Information_Result">
+          <Property Type="Single" Name="cijenaOdPolaska" Nullable="false" />
+          <Property Type="Double" Name="CijenaOdTrenutnogGradaDoDestinacije" Nullable="true" />
+          <Property Type="Boolean" Name="isStudentska" Nullable="true" />
+          <Property Type="String" Name="Linija" Nullable="true" />
+          <Property Type="String" Name="Grad" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="usp_mobile_Get_User_Credit_Cards_Result">
+          <Property Type="String" Name="Kartica" Nullable="true" />
+          <Property Type="Int32" Name="Id" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="usp_mobile_Get_All_User_Transactions_Result">
+          <Property Type="String" Name="Status" Nullable="true" />
+          <Property Type="Single" Name="UkupnaCijena" Nullable="false" />
+          <Property Type="String" Name="datumPutovanja" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="vrijemePolaska" Nullable="true" />
+          <Property Type="String" Name="datumKupovine" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Destinacija" Nullable="true" />
+          <Property Type="String" Name="VrijemeDolaska" Nullable="true" />
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="Int32" Name="KartaId" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="usp_mobile_Get_All_User_Transactions_Result1">
+          <Property Type="DateTime" Name="Column1" Nullable="true" />
+          <Property Type="String" Name="Status" Nullable="true" />
+          <Property Type="Single" Name="UkupnaCijena" Nullable="false" />
+          <Property Type="DateTime" Name="datumPutovanja" Nullable="false" />
+          <Property Type="Single" Name="cijenaOdPolaska" Nullable="false" />
+          <Property Type="Double" Name="CijenaOdTrenutnogGradaDoDestinacije" Nullable="true" />
+          <Property Type="String" Name="vrijemeDolaska" Nullable="true" />
+          <Property Type="String" Name="Linija" Nullable="true" />
+          <Property Type="String" Name="Grad" Nullable="false" />
+          <Property Type="String" Name="vrijemePolaska" Nullable="true" />
+          <Property Type="String" Name="VrijemeDolaskaNaZadnjuStanicu" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="usp_mobile_Get_All_User_Finished_Travels_Result">
+          <Property Type="String" Name="datumKupovine" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Status" Nullable="true" />
+          <Property Type="Single" Name="UkupnaCijena" Nullable="false" />
+          <Property Type="String" Name="datumPutovanja" Nullable="true" MaxLength="10" />
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="vrijemePolaska" Nullable="true" />
+          <Property Type="String" Name="Destinacija" Nullable="true" />
+          <Property Type="String" Name="VrijemeDolaska" Nullable="true" />
+          <Property Type="Int32" Name="KartaId" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="usp_mobile_Get_Line_Discounts_Result">
+          <Property Type="Single" Name="Postotak" Nullable="false" />
+          <Property Type="String" Name="vrstaPopusta" Nullable="true" />
+          <Property Type="String" Name="Opis" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="usp_mobile_Recommender_Load_Rates_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="Int32" Name="KartaId" Nullable="true" />
+          <Property Type="Int32" Name="KlijentiId" Nullable="true" />
+          <Property Type="String" Name="Komentar" Nullable="true" />
+          <Property Type="Int32" Name="Ocjena" Nullable="false" />
+          <Property Type="String" Name="Opis" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="usp_mobile_Recommnder_Load_Relations_Different_Than_Current_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="Single" Name="cijenaOdPolaska" Nullable="false" />
+          <Property Type="Int32" Name="LinijeId" Nullable="false" />
+          <Property Type="Int32" Name="GradId" Nullable="false" />
+          <Property Type="String" Name="vrijemeDolaska" Nullable="true" />
+          <Property Type="Boolean" Name="IsDeleted" Nullable="false" />
+          <Property Type="Double" Name="CijenaOdTrenutnogGradaDoDestinacije" Nullable="true" />
+          <Property Type="Boolean" Name="isStudentska" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="usp_mobile_Get_Cite_That_Line_Pass_By_Id_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="Single" Name="Cijena_od_polaska" Nullable="false" />
+          <Property Type="String" Name="Grad" Nullable="false" />
+          <Property Type="Time" Name="Vrijeme_dolaska" Nullable="true" />
+          <Property Type="String" Name="Tip_karte" Nullable="false" MaxLength="10" />
+          <Property Type="Double" Name="Cijena_od_grada_destinacije" Nullable="false" />
+          <Property Type="String" Name="Naziv" Nullable="true" />
+          <Property Type="String" Name="vrijemePolaska" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="usp_Get_Line_Earnings_Result">
+          <Property Type="String" Name="Naziv" Nullable="true" />
+          <Property Type="Double" Name="Zarada" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="usp_Get_Reservation_Counter_On_Line_Result">
+          <Property Type="String" Name="Naziv" Nullable="true" />
+          <Property Type="Int32" Name="Mjesec" Nullable="true" />
+          <Property Type="Int32" Name="BrojProdatihKarataPoMjesecima" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Get_All_Bus_Names_Result">
+          <Property Type="String" Name="Autobus" Nullable="true" />
+          <Property Type="Int32" Name="Id" Nullable="false" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="p1744_ModelStoreContainer" CdmEntityContainer="eBusStation_Entities">
+          <EntitySetMapping Name="C__EFMigrationsHistory">
+            <EntityTypeMapping TypeName="p1744_Model.C__EFMigrationsHistory">
+              <MappingFragment StoreEntitySet="__EFMigrationsHistory">
+                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Autobusi">
+            <EntityTypeMapping TypeName="p1744_Model.Autobusi">
+              <MappingFragment StoreEntitySet="Autobusi">
+                <ScalarProperty Name="RegOznake" ColumnName="RegOznake" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="brojSjedistaBusa" ColumnName="brojSjedistaBusa" />
+                <ScalarProperty Name="Proizvodjac" ColumnName="Proizvodjac" />
+                <ScalarProperty Name="slikaAutobusa" ColumnName="slikaAutobusa" />
+                <ScalarProperty Name="VrstaAutobusaId" ColumnName="VrstaAutobusaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AutorizacijskiToken">
+            <EntityTypeMapping TypeName="p1744_Model.AutorizacijskiToken">
+              <MappingFragment StoreEntitySet="AutorizacijskiToken">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Vrijednost" ColumnName="Vrijednost" />
+                <ScalarProperty Name="KorisnikId" ColumnName="KorisnikId" />
+                <ScalarProperty Name="VrijemeEvidentiranja" ColumnName="VrijemeEvidentiranja" />
+                <ScalarProperty Name="IpAdresa" ColumnName="IpAdresa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Drzave">
+            <EntityTypeMapping TypeName="p1744_Model.Drzave">
+              <MappingFragment StoreEntitySet="Drzave">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Gradovi">
+            <EntityTypeMapping TypeName="p1744_Model.Gradovi">
+              <MappingFragment StoreEntitySet="Gradovi">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+                <ScalarProperty Name="DrzavaId" ColumnName="DrzavaId" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Karte">
+            <EntityTypeMapping TypeName="p1744_Model.Karte">
+              <MappingFragment StoreEntitySet="Karte">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="BrojKarte" ColumnName="BrojKarte" />
+                <ScalarProperty Name="datumPutovanja" ColumnName="datumPutovanja" />
+                <ScalarProperty Name="brojSjedista" ColumnName="brojSjedista" />
+                <ScalarProperty Name="Aktivna" ColumnName="Aktivna" />
+                <ScalarProperty Name="TipKarteId" ColumnName="TipKarteId" />
+                <ScalarProperty Name="PosjecujeLokacijeId" ColumnName="PosjecujeLokacijeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kartice">
+            <EntityTypeMapping TypeName="p1744_Model.Kartice">
+              <MappingFragment StoreEntitySet="Kartice">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="BrojKartice" ColumnName="BrojKartice" />
+                <ScalarProperty Name="datumIsteka" ColumnName="datumIsteka" />
+                <ScalarProperty Name="Banka" ColumnName="Banka" />
+                <ScalarProperty Name="vrstaKartice" ColumnName="vrstaKartice" />
+                <ScalarProperty Name="StanjeRacuna" ColumnName="StanjeRacuna" />
+                <ScalarProperty Name="SredstvoPlacanjaId" ColumnName="SredstvoPlacanjaId" />
+                <ScalarProperty Name="KlijentiId" ColumnName="KlijentiId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KretanjeAutobusa">
+            <EntityTypeMapping TypeName="p1744_Model.KretanjeAutobusa">
+              <MappingFragment StoreEntitySet="KretanjeAutobusa">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TrajanjePuta" ColumnName="TrajanjePuta" />
+                <ScalarProperty Name="LinijeId" ColumnName="LinijeId" />
+                <ScalarProperty Name="AutobusId" ColumnName="AutobusId" />
+                <ScalarProperty Name="vrijemePolaska" ColumnName="vrijemePolaska" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Linije">
+            <EntityTypeMapping TypeName="p1744_Model.Linije">
+              <MappingFragment StoreEntitySet="Linije">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+                <ScalarProperty Name="TipLinije" ColumnName="TipLinije" />
+                <ScalarProperty Name="RedniBrojLinije" ColumnName="RedniBrojLinije" />
+                <ScalarProperty Name="PrevoznikId" ColumnName="PrevoznikId" />
+                <ScalarProperty Name="PolazakId" ColumnName="PolazakId" />
+                <ScalarProperty Name="DestinacijaId" ColumnName="DestinacijaId" />
+                <ScalarProperty Name="vrijemePolaska" ColumnName="vrijemePolaska" />
+                <ScalarProperty Name="AutobusId" ColumnName="AutobusId" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Popusti">
+            <EntityTypeMapping TypeName="p1744_Model.Popusti">
+              <MappingFragment StoreEntitySet="Popusti">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="vrstaPopusta" ColumnName="vrstaPopusta" />
+                <ScalarProperty Name="Postotak" ColumnName="Postotak" />
+                <ScalarProperty Name="DatumVazenjaPopusta" ColumnName="DatumVazenjaPopusta" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PopustNaLiniji">
+            <EntityTypeMapping TypeName="p1744_Model.PopustNaLiniji">
+              <MappingFragment StoreEntitySet="PopustNaLiniji">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="PopustId" ColumnName="PopustId" />
+                <ScalarProperty Name="LinijeId" ColumnName="LinijeId" />
+                <ScalarProperty Name="Opis" ColumnName="Opis" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PosjecujeLokacije">
+            <EntityTypeMapping TypeName="p1744_Model.PosjecujeLokacije">
+              <MappingFragment StoreEntitySet="PosjecujeLokacije">
+                <ScalarProperty Name="isStudentska" ColumnName="isStudentska" />
+                <ScalarProperty Name="CijenaOdTrenutnogGradaDoDestinacije" ColumnName="CijenaOdTrenutnogGradaDoDestinacije" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="cijenaOdPolaska" ColumnName="cijenaOdPolaska" />
+                <ScalarProperty Name="LinijeId" ColumnName="LinijeId" />
+                <ScalarProperty Name="GradId" ColumnName="GradId" />
+                <ScalarProperty Name="vrijemeDolaska" ColumnName="vrijemeDolaska" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PosjedujeAutobuse">
+            <EntityTypeMapping TypeName="p1744_Model.PosjedujeAutobuse">
+              <MappingFragment StoreEntitySet="PosjedujeAutobuse">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="PrevoznikId" ColumnName="PrevoznikId" />
+                <ScalarProperty Name="AutobusId" ColumnName="AutobusId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Prevoznici">
+            <EntityTypeMapping TypeName="p1744_Model.Prevoznici">
+              <MappingFragment StoreEntitySet="Prevoznici">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+                <ScalarProperty Name="KontaktTelefon" ColumnName="KontaktTelefon" />
+                <ScalarProperty Name="webStranica" ColumnName="webStranica" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Recenzije">
+            <EntityTypeMapping TypeName="p1744_Model.Recenzije">
+              <MappingFragment StoreEntitySet="Recenzije">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Ocjena" ColumnName="Ocjena" />
+                <ScalarProperty Name="Opis" ColumnName="Opis" />
+                <ScalarProperty Name="Komentar" ColumnName="Komentar" />
+                <ScalarProperty Name="KlijentiId" ColumnName="KlijentiId" />
+                <ScalarProperty Name="KartaId" ColumnName="KartaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SredstvoPlacanja">
+            <EntityTypeMapping TypeName="p1744_Model.SredstvoPlacanja">
+              <MappingFragment StoreEntitySet="SredstvoPlacanja">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Tip" ColumnName="Tip" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Stanice">
+            <EntityTypeMapping TypeName="p1744_Model.Stanice">
+              <MappingFragment StoreEntitySet="Stanice">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+                <ScalarProperty Name="GradId" ColumnName="GradId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoviKarte">
+            <EntityTypeMapping TypeName="p1744_Model.TipoviKarte">
+              <MappingFragment StoreEntitySet="TipoviKarte">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Tip" ColumnName="Tip" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TransakcijaStavke">
+            <EntityTypeMapping TypeName="p1744_Model.TransakcijaStavke">
+              <MappingFragment StoreEntitySet="TransakcijaStavke">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Kolicina" ColumnName="Kolicina" />
+                <ScalarProperty Name="UkupnaCijena" ColumnName="UkupnaCijena" />
+                <ScalarProperty Name="TransakcijaId" ColumnName="TransakcijaId" />
+                <ScalarProperty Name="KartaId" ColumnName="KartaId" />
+                <ScalarProperty Name="PopustId" ColumnName="PopustId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Transakcije">
+            <EntityTypeMapping TypeName="p1744_Model.Transakcije">
+              <MappingFragment StoreEntitySet="Transakcije">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="datumKupovine" ColumnName="datumKupovine" />
+                <ScalarProperty Name="brojTransakcije" ColumnName="brojTransakcije" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="otkazano" ColumnName="otkazano" />
+                <ScalarProperty Name="KlijentiId" ColumnName="KlijentiId" />
+                <ScalarProperty Name="KarticaId" ColumnName="KarticaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Uloge">
+            <EntityTypeMapping TypeName="p1744_Model.Uloge">
+              <MappingFragment StoreEntitySet="Uloge">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+                <ScalarProperty Name="Opis" ColumnName="Opis" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VrstaAutobusa">
+            <EntityTypeMapping TypeName="p1744_Model.VrstaAutobusa">
+              <MappingFragment StoreEntitySet="VrstaAutobusa">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Tip" ColumnName="Tip" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetAllUsers" FunctionName="p1744_Model.Store.usp_GetAllUsers">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="p1744_Model.usp_GetAllUsers_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="Ime" ColumnName="Ime" />
+                <ScalarProperty Name="Prezime" ColumnName="Prezime" />
+                <ScalarProperty Name="datumRodjenja" ColumnName="datumRodjenja" />
+                <ScalarProperty Name="Spol" ColumnName="Spol" />
+                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+                <ScalarProperty Name="ZemljaPorijekla" ColumnName="ZemljaPorijekla" />
+                <ScalarProperty Name="Discriminator" ColumnName="Discriminator" />
+                <ScalarProperty Name="BrojIndeksa" ColumnName="BrojIndeksa" />
+                <ScalarProperty Name="slikaIndeksa" ColumnName="slikaIndeksa" />
+                <ScalarProperty Name="slikaPenzionerskeKartice" ColumnName="slikaPenzionerskeKartice" />
+                <ScalarProperty Name="GodineIskustva" ColumnName="GodineIskustva" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="isValid" ColumnName="isValid" />
+                <ScalarProperty Name="Zanimanje" ColumnName="Zanimanje" />
+                <ScalarProperty Name="UlogeId" ColumnName="UlogeId" />
+                <ScalarProperty Name="Adresa" ColumnName="Adresa" />
+                <ScalarProperty Name="Grad" ColumnName="Grad" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Get_UserByCredentials" FunctionName="p1744_Model.Store.usp_Get_User">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="p1744_Model.usp_Get_User_Result">
+                <ScalarProperty Name="Ime_prezime" ColumnName="Ime_prezime" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Hash" ColumnName="Hash" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_Edit_Users_Hash" FunctionName="p1744_Model.Store.usp_Edit_Users_Hash" />
+          <EntitySetMapping Name="Korisnici">
+            <EntityTypeMapping TypeName="p1744_Model.Korisnici">
+              <MappingFragment StoreEntitySet="Korisnici">
+                <ScalarProperty Name="Salt" ColumnName="Salt" />
+                <ScalarProperty Name="Hash" ColumnName="Hash" />
+                <ScalarProperty Name="Grad" ColumnName="Grad" />
+                <ScalarProperty Name="Adresa" ColumnName="Adresa" />
+                <ScalarProperty Name="UlogeId" ColumnName="UlogeId" />
+                <ScalarProperty Name="Zanimanje" ColumnName="Zanimanje" />
+                <ScalarProperty Name="isValid" ColumnName="isValid" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="GodineIskustva" ColumnName="GodineIskustva" />
+                <ScalarProperty Name="slikaPenzionerskeKartice" ColumnName="slikaPenzionerskeKartice" />
+                <ScalarProperty Name="slikaIndeksa" ColumnName="slikaIndeksa" />
+                <ScalarProperty Name="BrojIndeksa" ColumnName="BrojIndeksa" />
+                <ScalarProperty Name="Discriminator" ColumnName="Discriminator" />
+                <ScalarProperty Name="ZemljaPorijekla" ColumnName="ZemljaPorijekla" />
+                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+                <ScalarProperty Name="Spol" ColumnName="Spol" />
+                <ScalarProperty Name="datumRodjenja" ColumnName="datumRodjenja" />
+                <ScalarProperty Name="Prezime" ColumnName="Prezime" />
+                <ScalarProperty Name="Ime" ColumnName="Ime" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Obavijesti">
+            <EntityTypeMapping TypeName="p1744_Model.Obavijesti">
+              <MappingFragment StoreEntitySet="Obavijesti">
+                <ScalarProperty Name="Tekst" ColumnName="Tekst" />
+                <ScalarProperty Name="LinijaId" ColumnName="LinijaId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="Get_All_Relations" FunctionName="p1744_Model.Store.usp_Get_All_Relations">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="p1744_Model.usp_Get_All_Relations_Result">
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+                <ScalarProperty Name="TipLinije" ColumnName="TipLinije" />
+                <ScalarProperty Name="Prevoznik" ColumnName="Prevoznik" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Add_Info_Notification" FunctionName="p1744_Model.Store.usp_Add_Info_Notification" />
+          <FunctionImportMapping FunctionImportName="Add_Discount" FunctionName="p1744_Model.Store.usp_Add_Discount" />
+          <FunctionImportMapping FunctionImportName="Add_Discount_On_Line" FunctionName="p1744_Model.Store.usp_Add_Discount_On_Line" />
+          <FunctionImportMapping FunctionImportName="Get_All_Notifications" FunctionName="p1744_Model.Store.usp_Get_All_Notifications">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="p1744_Model.usp_Get_All_Notifications_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Tekst" ColumnName="Tekst" />
+                <ScalarProperty Name="Tip" ColumnName="Tip" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Edit_Notification" FunctionName="p1744_Model.Store.usp_Edit_Notification" />
+          <FunctionImportMapping FunctionImportName="Get_Lines_With_Traveler" FunctionName="p1744_Model.Store.usp_Get_Lines_With_Traveler">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="p1744_Model.usp_Get_Lines_With_Traveler_Result">
+                <ScalarProperty Name="Naziv_linije" ColumnName="Naziv linije" />
+                <ScalarProperty Name="Tip_linije" ColumnName="Tip linije" />
+                <ScalarProperty Name="Prevoznik" ColumnName="Prevoznik" />
+                <ScalarProperty Name="Vrijeme_polaska" ColumnName="Vrijeme polaska" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Get_All_Cities" FunctionName="p1744_Model.Store.usp_Get_All_Cities">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="p1744_Model.usp_Get_All_Cities_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Make_Relation_Un_Active" FunctionName="p1744_Model.Store.usp_Make_Relation_Un_Active" />
+          <FunctionImportMapping FunctionImportName="Get_Travelers" FunctionName="p1744_Model.Store.usp_Get_Travelers">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="p1744_Model.usp_Get_Travelers_Result">
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Edit_Relation" FunctionName="p1744_Model.Store.usp_Edit_Relation" />
+          <FunctionImportMapping FunctionImportName="Add_Relation" FunctionName="p1744_Model.Store.usp_Add_Relation" />
+          <FunctionImportMapping FunctionImportName="Get_Cities_That_Line_Passes" FunctionName="p1744_Model.Store.usp_Get_Cities_That_Line_Passes">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="p1744_Model.usp_Get_Cities_That_Line_Passes_Result">
+                <ScalarProperty Name="Grad" ColumnName="Grad" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+                <ScalarProperty Name="vrijemePolaska" ColumnName="vrijemePolaska" />
+                <ScalarProperty Name="cijenaOdPolaska" ColumnName="cijenaOdPolaska" />
+                </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Add_City_That_Line_Pass" FunctionName="p1744_Model.Store.usp_Add_City_That_Line_Pass" />
+          <FunctionImportMapping FunctionImportName="Update_City_That_Line_Pass" FunctionName="p1744_Model.Store.usp_Update_City_That_Line_Pass" />
+          <FunctionImportMapping FunctionImportName="Delete_City_That_Line_Pass" FunctionName="p1744_Model.Store.usp_Delete_City_That_Line_Pass" />
+          <FunctionImportMapping FunctionImportName="Get_Types_Of_Buses" FunctionName="p1744_Model.Store.usp_Get_Types_Of_Buses">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="p1744_Model.usp_Get_Types_Of_Buses_Result">
+                <ScalarProperty Name="Tip" ColumnName="Tip" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Search_Buses" FunctionName="p1744_Model.Store.usp_Search_Buses">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="p1744_Model.usp_Search_Buses_Result">
+                <ScalarProperty Name="Autobus" ColumnName="Autobus" />
+                <ScalarProperty Name="AutobusId" ColumnName="AutobusId" />
+                <ScalarProperty Name="Linija" ColumnName="Linija" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="SaobracajniDnevnik">
+            <EntityTypeMapping TypeName="p1744_Model.SaobracajniDnevnik">
+              <MappingFragment StoreEntitySet="SaobracajniDnevnik">
+                <ScalarProperty Name="vrijemeKasnjena" ColumnName="vrijemeKasnjena" />
+                <ScalarProperty Name="daLiJeKansnio" ColumnName="daLiJeKansnio" />
+                <ScalarProperty Name="StanicaId" ColumnName="StanicaId" />
+                <ScalarProperty Name="UposlenikId" ColumnName="UposlenikId" />
+                <ScalarProperty Name="brojPutnogNaloga" ColumnName="brojPutnogNaloga" />
+                <ScalarProperty Name="vrijemeDolaska" ColumnName="vrijemeDolaska" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="Add_Coming_Bus_On_Station" FunctionName="p1744_Model.Store.usp_Add_Coming_Bus_On_Station" />
+          <FunctionImportMapping FunctionImportName="Get_Station_By_City" FunctionName="p1744_Model.Store.usp_Get_Station_By_City" />
+          <FunctionImportMapping FunctionImportName="usp_mobile_Add_User" FunctionName="p1744_Model.Store.usp_mobile_Add_User" />
+          <FunctionImportMapping FunctionImportName="usp_mobile_Get_User" FunctionName="p1744_Model.Store.usp_mobile_Get_User">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="p1744_Model.usp_mobile_Get_User_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Ime" ColumnName="Ime" />
+                <ScalarProperty Name="Prezime" ColumnName="Prezime" />
+                <ScalarProperty Name="Hash" ColumnName="Hash" />
+                <ScalarProperty Name="Salt" ColumnName="Salt" />
+                <ScalarProperty Name="Zanimanje" ColumnName="Zanimanje" />
+                <ScalarProperty Name="slikaIndeksa" ColumnName="slikaIndeksa" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_mobile_Search_Lines" FunctionName="p1744_Model.Store.usp_mobile_Search_Lines">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="p1744_Model.usp_mobile_Search_Lines_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="cijenaOdPolaska" ColumnName="cijenaOdPolaska" />
+                <ScalarProperty Name="vrijemeDolaska" ColumnName="vrijemeDolaska" />
+                <ScalarProperty Name="CijenaOdTrenutnogGradaDoDestinacije" ColumnName="CijenaOdTrenutnogGradaDoDestinacije" />
+                <ScalarProperty Name="isStudentska" ColumnName="isStudentska" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+                <ScalarProperty Name="TipLinije" ColumnName="TipLinije" />
+                <ScalarProperty Name="Prevoznik" ColumnName="Prevoznik" />
+                <ScalarProperty Name="vrijemePolaska" ColumnName="vrijemePolaska" />
+                <ScalarProperty Name="LinijaId" ColumnName="LinijaId" />
+                <ScalarProperty Name="PosjeceniGrad" ColumnName="PosjeceniGrad" />
+                </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Add_Bus_Picture" FunctionName="p1744_Model.Store.usp_Add_Bus_Picture" />
+          <FunctionImportMapping FunctionImportName="usp_mobile_Get_Buses_Information" FunctionName="p1744_Model.Store.usp_mobile_Get_Buses_Information">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="p1744_Model.usp_mobile_Get_Buses_Information_Result">
+                <ScalarProperty Name="brojSjedistaBusa" ColumnName="brojSjedistaBusa" />
+                <ScalarProperty Name="slikaAutobusa" ColumnName="slikaAutobusa" />
+                <ScalarProperty Name="Proizvodjac" ColumnName="Proizvodjac" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_mobile_Get_Available_Places_Bus_At_Date" FunctionName="p1744_Model.Store.usp_mobile_Get_Available_Places_Bus_At_Date">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="p1744_Model.usp_mobile_Get_Available_Places_Bus_At_Date_Result">
+                <ScalarProperty Name="Aktivna" ColumnName="Aktivna" />
+                <ScalarProperty Name="brojSjedista" ColumnName="brojSjedista" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_mobile_Get_Relation_Offer_Information" FunctionName="p1744_Model.Store.usp_mobile_Get_Relation_Offer_Information">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="p1744_Model.usp_mobile_Get_Relation_Offer_Information_Result">
+                <ScalarProperty Name="cijenaOdPolaska" ColumnName="cijenaOdPolaska" />
+                <ScalarProperty Name="CijenaOdTrenutnogGradaDoDestinacije" ColumnName="CijenaOdTrenutnogGradaDoDestinacije" />
+                <ScalarProperty Name="isStudentska" ColumnName="isStudentska" />
+                <ScalarProperty Name="Linija" ColumnName="Linija" />
+                <ScalarProperty Name="Grad" ColumnName="Grad" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_mobile_Get_User_Credit_Cards" FunctionName="p1744_Model.Store.usp_mobile_Get_User_Credit_Cards" >
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="p1744_Model.usp_mobile_Get_User_Credit_Cards_Result">
+                <ScalarProperty Name="Kartica" ColumnName="Kartica" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_mobile_Add_User_Travel" FunctionName="p1744_Model.Store.usp_mobile_Add_User_Travel" />
+          <FunctionImportMapping FunctionImportName="usp_mobile_Add_User_Transaction" FunctionName="p1744_Model.Store.usp_mobile_Add_User_Transaction" />
+          <FunctionImportMapping FunctionImportName="usp_mobile_Add_User_Transaction_Detail" FunctionName="p1744_Model.Store.usp_mobile_Add_User_Transaction_Detail" />
+          <FunctionImportMapping FunctionImportName="usp_mobile_Get_All_User_Transactions" FunctionName="p1744_Model.Store.usp_mobile_Get_All_User_Transactions">
+          <ResultMapping>
+              <ComplexTypeMapping TypeName="p1744_Model.usp_mobile_Get_All_User_Transactions_Result">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="UkupnaCijena" ColumnName="UkupnaCijena" />
+                <ScalarProperty Name="datumPutovanja" ColumnName="datumPutovanja" />
+                <ScalarProperty Name="vrijemePolaska" ColumnName="vrijemePolaska" />
+                <ScalarProperty Name="datumKupovine" ColumnName="datumKupovine" />
+                <ScalarProperty Name="Destinacija" ColumnName="Destinacija" />
+                <ScalarProperty Name="VrijemeDolaska" ColumnName="VrijemeDolaska" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="KartaId" ColumnName="KartaId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_mobile_Cancel_Transaction" FunctionName="p1744_Model.Store.usp_mobile_Cancel_Transaction" />
+          <FunctionImportMapping FunctionImportName="usp_mobile_Get_All_User_Finished_Travels" FunctionName="p1744_Model.Store.usp_mobile_Get_All_User_Finished_Travels">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="p1744_Model.usp_mobile_Get_All_User_Finished_Travels_Result">
+                <ScalarProperty Name="datumKupovine" ColumnName="datumKupovine" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="UkupnaCijena" ColumnName="UkupnaCijena" />
+                <ScalarProperty Name="datumPutovanja" ColumnName="datumPutovanja" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="vrijemePolaska" ColumnName="vrijemePolaska" />
+                <ScalarProperty Name="Destinacija" ColumnName="Destinacija" />
+                <ScalarProperty Name="VrijemeDolaska" ColumnName="VrijemeDolaska" />
+                <ScalarProperty Name="KartaId" ColumnName="KartaId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_mobile_Add_User_Recension" FunctionName="p1744_Model.Store.usp_mobile_Add_User_Recension" />
+          <FunctionImportMapping FunctionImportName="usp_mobile_Get_Line_Discounts" FunctionName="p1744_Model.Store.usp_mobile_Get_Line_Discounts">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="p1744_Model.usp_mobile_Get_Line_Discounts_Result">
+                <ScalarProperty Name="Postotak" ColumnName="Postotak" />
+                <ScalarProperty Name="vrstaPopusta" ColumnName="vrstaPopusta" />
+                <ScalarProperty Name="Opis" ColumnName="Opis" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_mobile_Recommender_Load_Rates" FunctionName="p1744_Model.Store.usp_mobile_Recommender_Load_Rates">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="p1744_Model.usp_mobile_Recommender_Load_Rates_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="KartaId" ColumnName="KartaId" />
+                <ScalarProperty Name="KlijentiId" ColumnName="KlijentiId" />
+                <ScalarProperty Name="Komentar" ColumnName="Komentar" />
+                <ScalarProperty Name="Ocjena" ColumnName="Ocjena" />
+                <ScalarProperty Name="Opis" ColumnName="Opis" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_mobile_Recommnder_Load_Relations_Different_Than_Current" FunctionName="p1744_Model.Store.usp_mobile_Recommnder_Load_Relations_Different_Than_Current">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="p1744_Model.usp_mobile_Recommnder_Load_Relations_Different_Than_Current_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="cijenaOdPolaska" ColumnName="cijenaOdPolaska" />
+                <ScalarProperty Name="LinijeId" ColumnName="LinijeId" />
+                <ScalarProperty Name="GradId" ColumnName="GradId" />
+                <ScalarProperty Name="vrijemeDolaska" ColumnName="vrijemeDolaska" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="CijenaOdTrenutnogGradaDoDestinacije" ColumnName="CijenaOdTrenutnogGradaDoDestinacije" />
+                <ScalarProperty Name="isStudentska" ColumnName="isStudentska" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_mobile_Get_Cite_That_Line_Pass_By_Id" FunctionName="p1744_Model.Store.usp_mobile_Get_Cite_That_Line_Pass_By_Id">
+          <ResultMapping>
+              <ComplexTypeMapping TypeName="p1744_Model.usp_Get_Cities_That_Line_Passes_Result">
+                <ScalarProperty Name="Grad" ColumnName="Grad" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+                <ScalarProperty Name="vrijemePolaska" ColumnName="vrijemePolaska" />
+                <ScalarProperty Name="cijenaOdPolaska" ColumnName="cijenaOdPolaska" />
+                <ScalarProperty Name="Vrijeme_dolaska" ColumnName="Vrijeme_dolaska" />
+                <ScalarProperty Name="Tip_karte" ColumnName="Tip_karte" />
+                <ScalarProperty Name="Cijena_od_grada_destinacije" ColumnName="Cijena_od_grada_destinacije" />
+                </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_mobile_Check_For_Recension_It_Exists" FunctionName="p1744_Model.Store.usp_mobile_Check_For_Recension_It_Exists" />
+          <FunctionImportMapping FunctionImportName="Get_Line_Earnings" FunctionName="p1744_Model.Store.usp_Get_Line_Earnings">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="p1744_Model.usp_Get_Line_Earnings_Result">
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+                <ScalarProperty Name="Zarada" ColumnName="Zarada" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Get_Reservation_Counter_On_Line" FunctionName="p1744_Model.Store.usp_Get_Reservation_Counter_On_Line">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="p1744_Model.usp_Get_Reservation_Counter_On_Line_Result">
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+                <ScalarProperty Name="Mjesec" ColumnName="Mjesec" />
+                <ScalarProperty Name="BrojProdatihKarataPoMjesecima" ColumnName="BrojProdatihKarataPoMjesecima" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_Add_Bus" FunctionName="p1744_Model.Store.usp_Add_Bus" />
+          <FunctionImportMapping FunctionImportName="Get_All_Bus_Names" FunctionName="p1744_Model.Store.usp_Get_All_Bus_Names" >
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="p1744_Model.Get_All_Bus_Names_Result">
+                <ScalarProperty Name="Autobus" ColumnName="Autobus" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

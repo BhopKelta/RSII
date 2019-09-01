@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="eBusStation.Phone.Registration"
+            xmlns:input="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit">
+    <ContentPage.Content>
+        <ScrollView>
+        <StackLayout VerticalOptions="CenterAndExpand">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+            </Grid>
+            <Label Text="Registracija na @eBusStation" x:Name="LabelRegistration" FontSize="24" HorizontalOptions="Center" Grid.ColumnSpan="2"></Label>
+            <Label Text="Ime:" FontSize="18" Grid.Row="1"></Label>
+            <Entry x:Name="textBoxName"  Grid.Row="1" Grid.Column="1"></Entry>
+
+            <Label Text="Prezime:" FontSize="18" Grid.Row="2"></Label>
+            <Entry x:Name="textBoxSurname"  Grid.Row="2" Grid.Column="1"></Entry>
+
+            <Label Text="Datum rodjenja" FontSize="18" Grid.Row="3"></Label>
+            <DatePicker x:Name="datePicker" MinimumDate="01/01/1920" ></DatePicker>
+            <Label Text="Spol:" FontSize="18" Grid.Row="4" Grid.Column="1"></Label>
+            
+            <input:RadioButtonGroupView Orientation="Horizontal" x:Name="radioButtonGender">
+            <input:RadioButton  Text="M" Grid.Row="4" Grid.Column="1" Value="M"/>
+                <input:RadioButton Text="F" Grid.Row="4" Grid.Column="1" Value="F"/>
+            </input:RadioButtonGroupView>
+            <Label Text="Zanimanje:" FontSize="18" Grid.Row="5"></Label>
+            <Picker Grid.Row="5" Grid.Column="1" x:Name="pickerJob">
+                <Picker.Items>
+                    <x:String>Student</x:String>
+                    <x:String>Penzioner</x:String>
+                    <x:String>Ostalo</x:String>
+                </Picker.Items>
+            </Picker>
+            <Label Text="Email:" x:Name="LabelEmail" FontSize="18" Grid.Row="6"></Label>
+            <Entry x:Name="textBoxEmail" Grid.Row="6" Grid.Column="1"></Entry>
+            
+            <Label Text="Korisnicko ime:" FontSize="18" Grid.Row="7"></Label>
+            <Entry x:Name="textBoxUsername" Grid.Row="7" Grid.Column="1"></Entry>
+            
+            <Label Text="Lozinka:" FontSize="18" Grid.Row="8"></Label>
+            <Entry x:Name="textBoxPassword" Grid.Row="8" Grid.Column="1" IsPassword="true" Placeholder="****"></Entry>
+
+            <Label Text="Ponovljena lozinka:" FontSize="18" x:Name="LabelPassword" Grid.Row="9"></Label>
+            <Entry x:Name="textBoxPasswordAgain" Grid.Row="9" Grid.Column="1" IsPassword="true" Placeholder="****"></Entry>
+
+            <Button  Grid.Row="10" Text="Registruj se" Clicked="Button_Clicked" HorizontalOptions="Center"></Button>
+        </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

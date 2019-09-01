@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="eBusStation.Phone.ReservationInfoDetails">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout  Orientation="Vertical" >
+                <Label Text="Detalji vase rezervacije"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" FontSize="Large" />
+                <Label Text="Vi putujete :" FontSize="Medium" FontAttributes="Italic"></Label>
+                <Label Margin="2" x:Name="travelRelationLabel" FontSize="Medium" FontAttributes="Italic">
+                </Label>
+                <Label Text="------------------------------"></Label>
+                <Label Text="Tip karte:" FontSize="Medium" FontAttributes="Italic"></Label>
+                <Label x:Name="travelTypeOfCardLabel" FontSize="Medium" FontAttributes="Italic" Margin="2"></Label>
+                <Label x:Name="twoWayTicketLabel" IsVisible="False" Text="Povratna karta" FontAttributes="Italic" FontSize="Medium"></Label>
+                <Label Text="------------------------------"></Label>
+
+                <Label Text="Datum putovanja: " FontSize="Medium" FontAttributes="Italic">
+                </Label>
+
+                <Label x:Name="travelDateOfTravelLabel" FontSize="Medium" FontAttributes="Italic"></Label>
+                <Label Text="Vasa sjedista :" FontSize="Medium" FontAttributes="Italic"></Label>
+                <Label x:Name="travelNumberOfBusSeats" Margin="2" FontSize="Medium" FontAttributes="Bold">
+                   
+                </Label>
+                <Label Text="------------------------------"></Label>
+
+                <Label Text="Kolicina karata: " FontSize="Medium" FontAttributes="Italic"></Label>
+                <Label x:Name="travelTicketNumber" FontSize="Medium" FontAttributes="Italic"></Label>
+                <Label Text="Cijena: " FontSize="Medium" FontAttributes="Italic"></Label>
+                <Label x:Name="travelPriceToPay" FontSize="Medium" FontAttributes="Italic" Margin="2"></Label>
+                <Label Text="------------------------------"></Label>
+
+                <Label Text="Vase kartice :" FontSize="Medium" FontAttributes="Italic"></Label>
+                <Picker  x:Name="travelCreditCards"></Picker>
+                <Button Text="Plati" FontSize="Medium" Clicked="ButtonSave_Clicked"></Button>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

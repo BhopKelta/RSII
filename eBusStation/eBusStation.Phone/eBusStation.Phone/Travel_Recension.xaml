@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="eBusStation.Phone.Travel_Recension"
+                  xmlns:input="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <Label Text="Pregled putovanja, ostavljanje recenzija za putovanja koja ste putovali."
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand"  FontSize="Medium"/>
+                <Entry Placeholder="Opis-komentar" x:Name="ratingString" ></Entry>
+                <input:AdvancedSlider x:Name="ratingValueInt" MaxValue="5" MinValue="1" StepValue="1" ValuePrefix="Ocjena putovanja:" Title="Odaberite ocjenu za putovanje"></input:AdvancedSlider>
+                <ListView x:Name="listViewTransactions" HasUnevenRows="True">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <ScrollView VerticalOptions="FillAndExpand">
+                                    <StackLayout Orientation="Vertical" Spacing="1" Padding="1">
+                                        <Label FontSize="Medium" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Text="{Binding datumPutovanja,StringFormat='Datum putovanja:{0}'}"></Label>
+                                        <Label FontSize="Medium" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Text="{Binding Destinacija,StringFormat='Putujete do :{0}'}"></Label>
+                                        <Label FontSize="Medium" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Text="{Binding VrijemeDolaska,StringFormat='Vrijeme dolaska:{0}'}"></Label>
+                                        <Button CommandParameter="{Binding .}" Text="Klikni za ostavljanje recenzije" Clicked="Button_Recension_Make_Clicked"></Button>
+                                    </StackLayout>
+                                </ScrollView>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

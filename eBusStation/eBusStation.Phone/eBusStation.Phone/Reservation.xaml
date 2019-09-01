@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="eBusStation.Phone.Reservation"
+             xmlns:input="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Spacing="2" Padding="2">
+            <Label Text="Rezervacija karte - odabir termina i pregled autobusa"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" FontSize="Large"/>
+            <Label x:Name="entirePlacesBus" FontSize="Large" FontAttributes="Bold"></Label>
+                <Label x:Name="availablePlaces" FontAttributes="Bold" FontSize="Large"></Label>
+            <Image x:Name="imageBus" WidthRequest="200" HeightRequest="300"></Image>
+            <Label Text="Odaberite datum rezervacije" FontSize="Medium" FontAttributes="Bold"></Label>
+            <DatePicker x:Name="dateTimePickerReservation"></DatePicker>
+            <Button x:Name="checkAvailablePlacesButton" Text="Pregled slobodnih mjesta" Clicked="Button_Clicked"></Button>
+            <StackLayout>
+                <Label x:Name="occupiedPlaces" FontSize="Large" FontAttributes="Italic"></Label>
+                    <input:AdvancedSlider x:Name="numberOfTickets" MaxValue="10" MinValue="1" StepValue="1" ValuePrefix="Kolicina:" Title="Odaberite kolicinu karata"></input:AdvancedSlider>
+                    <Button x:Name="goToPaymentButton" Opacity="0"></Button>
+            </StackLayout>
+        </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

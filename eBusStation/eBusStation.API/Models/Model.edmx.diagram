@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b42004cc658b4b8ba43be2fe002a9b40" Name="Diagram1">
+        <EntityTypeShape EntityType="p1744_Model.C__EFMigrationsHistory" Width="1.5" PointX="3.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="p1744_Model.Autobusi" Width="1.5" PointX="0.75" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="p1744_Model.AutorizacijskiToken" Width="1.5" PointX="12.75" PointY="18.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="p1744_Model.Drzave" Width="1.5" PointX="1.5" PointY="16.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="p1744_Model.Gradovi" Width="1.5" PointX="0.75" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="p1744_Model.Karte" Width="1.5" PointX="10.5" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="p1744_Model.Kartice" Width="1.5" PointX="11.25" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="p1744_Model.KretanjeAutobusa" Width="1.5" PointX="5.25" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="p1744_Model.Linije" Width="1.5" PointX="3" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="p1744_Model.Popusti" Width="1.5" PointX="13.5" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="p1744_Model.PopustNaLiniji" Width="1.5" PointX="5.25" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="p1744_Model.PosjecujeLokacije" Width="1.5" PointX="8.25" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="p1744_Model.PosjedujeAutobuse" Width="1.5" PointX="6" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="p1744_Model.Prevoznici" Width="1.5" PointX="0.75" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="p1744_Model.Recenzije" Width="1.5" PointX="12.75" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="p1744_Model.SredstvoPlacanja" Width="1.5" PointX="9" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="p1744_Model.Stanice" Width="1.5" PointX="3" PointY="13.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="p1744_Model.TipoviKarte" Width="1.5" PointX="8.25" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="p1744_Model.TransakcijaStavke" Width="1.5" PointX="15.75" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="p1744_Model.Transakcije" Width="1.5" PointX="13.5" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="p1744_Model.Uloge" Width="1.5" PointX="8.25" PointY="14.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="p1744_Model.VrstaAutobusa" Width="1.5" PointX="1.5" PointY="2.25" IsExpanded="true" />
+        <AssociationConnector Association="p1744_Model.FK_Autobusi_VrstaAutobusa_VrstaAutobusaId" ManuallyRouted="false" />
+        <AssociationConnector Association="p1744_Model.FK_KretanjeAutobusa_Autobusi_AutobusId" ManuallyRouted="false" />
+        <AssociationConnector Association="p1744_Model.FK_Linije_Autobusi_AutobusId" ManuallyRouted="false" />
+        <AssociationConnector Association="p1744_Model.FK_PosjedujeAutobuse_Autobusi_AutobusId" ManuallyRouted="false" />
+        <AssociationConnector Association="p1744_Model.FK_Gradovi_Drzave_DrzavaId" ManuallyRouted="false" />
+        <AssociationConnector Association="p1744_Model.FK_Linije_Gradovi_DestinacijaId" ManuallyRouted="false" />
+        <AssociationConnector Association="p1744_Model.FK_Linije_Gradovi_PolazakId" ManuallyRouted="false" />
+        <AssociationConnector Association="p1744_Model.FK_PosjecujeLokacije_Gradovi_GradId" ManuallyRouted="false" />
+        <AssociationConnector Association="p1744_Model.FK_Stanice_Gradovi_GradId" ManuallyRouted="false" />
+        <AssociationConnector Association="p1744_Model.FK_Karte_PosjecujeLokacije_PosjecujeLokacijeId" ManuallyRouted="false" />
+        <AssociationConnector Association="p1744_Model.FK_Karte_TipoviKarte_TipKarteId" ManuallyRouted="false" />
+        <AssociationConnector Association="p1744_Model.FK_Recenzije_Karte_KartaId" ManuallyRouted="false" />
+        <AssociationConnector Association="p1744_Model.FK_TransakcijaStavke_Karte_KartaId" ManuallyRouted="false" />
+        <AssociationConnector Association="p1744_Model.FK_Kartice_SredstvoPlacanja_SredstvoPlacanjaId" ManuallyRouted="false" />
+        <AssociationConnector Association="p1744_Model.FK_Transakcije_Kartice_KarticaId" ManuallyRouted="false" />
+        <AssociationConnector Association="p1744_Model.FK_KretanjeAutobusa_Linije_LinijeId" ManuallyRouted="false" />
+        <AssociationConnector Association="p1744_Model.FK_Linije_Prevoznici_PrevoznikId" ManuallyRouted="false" />
+        <AssociationConnector Association="p1744_Model.FK_PopustNaLiniji_Linije_LinijeId" ManuallyRouted="false" />
+        <AssociationConnector Association="p1744_Model.FK_PosjecujeLokacije_Linije_LinijeId" ManuallyRouted="false" />
+        <AssociationConnector Association="p1744_Model.FK_PopustNaLiniji_Popusti_PopustId" ManuallyRouted="false" />
+        <AssociationConnector Association="p1744_Model.FK_TransakcijaStavke_Popusti_PopustId" ManuallyRouted="false" />
+        <AssociationConnector Association="p1744_Model.FK_PosjedujeAutobuse_Prevoznici_PrevoznikId" ManuallyRouted="false" />
+        <AssociationConnector Association="p1744_Model.FK_TransakcijaStavke_Transakcije_TransakcijaId" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="p1744_Model.Korisnici" Width="1.5" PointX="10.5" PointY="12.75" />
+        <AssociationConnector Association="p1744_Model.FK_AutorizacijskiToken_Korisnici_KorisnikId" />
+        <AssociationConnector Association="p1744_Model.FK_Kartice_Korisnici_KlijentiId" />
+        <AssociationConnector Association="p1744_Model.FK_Korisnici_Uloge_UlogeId" />
+        <AssociationConnector Association="p1744_Model.FK_Recenzije_Korisnici_KlijentiId" />
+        <AssociationConnector Association="p1744_Model.FK_Transakcije_Korisnici_KlijentiId" />
+        <EntityTypeShape EntityType="p1744_Model.Obavijesti" Width="1.5" PointX="5.25" PointY="15" />
+        <AssociationConnector Association="p1744_Model.FK__Obavijest__Linij__39E294A9" />
+        <EntityTypeShape EntityType="p1744_Model.SaobracajniDnevnik" Width="1.5" PointX="12.75" PointY="14.375" />
+        <AssociationConnector Association="p1744_Model.FK_SaobracajniDnevnik_Korisnici_UposlenikId" />
+        <AssociationConnector Association="p1744_Model.FK_SaobracajniDnevnik_Stanice_StanicaId" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
