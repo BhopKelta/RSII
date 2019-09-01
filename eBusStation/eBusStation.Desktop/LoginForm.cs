@@ -63,7 +63,7 @@ namespace eBusStation.Desktop
                         }
                         this.Hide();
 
-                        NewBusInStation main = new  NewBusInStation();
+                        MainForm main = new  MainForm();
                         main.ShowDialog();
                         this.Close();
                     }
